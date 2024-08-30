@@ -15,9 +15,11 @@ html {
 body {
   display: flex;
   flex-direction: column;
-  font-size: 14px;
   min-height: 100%;
-  padding: 1rem 0 !important;
+  padding: 1rem 0;
+  font-size: 14px;
+  font-family: $font-family-montserrat;
+  background-color: $color-background--bright;
   overflow-x: hidden;
 }
 
