@@ -1,0 +1,19 @@
+.wrapper,
+.location {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.wrapper {
+  flex-direction: column;
+  width: fit-content;
+}
+
+.location {
+  font-weight: 700;
+}
+
+.date {
+  font-size: 14px;
+}

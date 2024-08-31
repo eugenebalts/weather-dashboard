@@ -7,14 +7,22 @@ import getCoordinates from '../../redux/slices/search/actions';
 import useDebounce from '../../hooks/useDebounce';
 import { GeocodingResponse } from '../../services/endpoints/geocoding/types';
 import Button from '../Button/Button';
+import getCurrentWeather from '../../redux/slices/weather/actions';
+import useClickOutside from '../../hooks/useClickOutside';
+import getLocationName from '../../utils/getLocationName';
 import styles from './LocationSearch.module.scss';
 
 const LocationSearch = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { suggestions } = useSelector((state: RootState) => state.search);
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const { suggestions, search } = useSelector((state: RootState) => state.search);
   const dispatch: AppDispatch = useDispatch();
+
+  useClickOutside(wrapperRef, () => {
+    setIsMenuOpen(false);
+  });
 
   const debouncedSearch = useDebounce((value: string) => {
     if (value) {
@@ -27,31 +35,19 @@ const LocationSearch = () => {
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
 
-    dispatch(searchActions.updateSearch(value));
     debouncedSearch(value);
   };
 
   const handleClickSuggestion = (suggestion: GeocodingResponse) => {
-    console.log(`suggestion ${suggestion}`); // TODO: SET CURRENT WEATHER IN STORE
+    const { lat, lon } = suggestion;
 
-    dispatch(searchActions.updateSearch(''));
-    dispatch(searchActions.clearSuggestions());
-  };
+    dispatch(getCurrentWeather({ lat, lon }));
 
-  const handleBlur = () => {
-    setTimeout(() => {
-      if (!inputRef.current?.contains(document.activeElement)) {
-        setIsMenuOpen(false);
-      }
-    }, 100);
-  };
-
-  const handleFocus = () => {
-    setIsMenuOpen(true);
+    setIsMenuOpen(false);
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} ref={wrapperRef}>
       <div className={styles.search}>
         <FiSearch />
         <input
@@ -60,9 +56,7 @@ const LocationSearch = () => {
           type='search'
           placeholder='Enter Location'
           onChange={handleChangeInput}
-          onBlur={handleBlur}
-          onFocus={handleFocus}
-          value={search}
+          onFocus={() => setIsMenuOpen(true)}
         />
       </div>
       {isMenuOpen && !!suggestions.length && (
@@ -74,7 +68,7 @@ const LocationSearch = () => {
               color='secondary'
               onClick={() => handleClickSuggestion(suggestion)}
             >
-              {suggestion.name}, {suggestion.country}
+              {getLocationName(suggestion.name, suggestion.country)}
             </Button>
           ))}
         </div>
