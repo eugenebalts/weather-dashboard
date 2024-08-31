@@ -4,7 +4,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
+  padding: 0.5rem;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -23,13 +24,13 @@
     border: 1px solid;
 
     &.primary {
-      border-color: green; // TEMP
-      color: green; // TEMP
+      border-color: $color-primary;
+      color: $color-primary;
     }
 
     &.secondary {
-      border-color: purple; // TEMP
-      color: purple; // TEMP
+      border-color: $color-secondary;
+      color: $color-secondary;
     }
 
     &:hover {
@@ -41,17 +42,17 @@
     border: none;
 
     &.primary {
-      background-color: green; // TEMP
-      color: white;
+      background-color: $color-primary;
+      color: $color-white;
     }
 
     &.secondary {
-      background-color: purple; // TEMP
+      background-color: $color-secondary;
       color: $color-white;
     }
 
     &:hover {
-      opacity: 0.8;
+      opacity: 0.9;
     }
   }
 
