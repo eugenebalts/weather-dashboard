@@ -1,0 +1,62 @@
+@import '../../styles/base/variables';
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &.text {
+    background: none;
+    border: none;
+
+    &:hover {
+      background-color: $color-black--tranparent--200;
+    }
+  }
+
+  &.outlined {
+    background: none;
+    border: 1px solid;
+
+    &.primary {
+      border-color: green; // TEMP
+      color: green; // TEMP
+    }
+
+    &.secondary {
+      border-color: purple; // TEMP
+      color: purple; // TEMP
+    }
+
+    &:hover {
+      background-color: $color-black--tranparent--200;
+    }
+  }
+
+  &.contained {
+    border: none;
+
+    &.primary {
+      background-color: green; // TEMP
+      color: white;
+    }
+
+    &.secondary {
+      background-color: purple; // TEMP
+      color: $color-white;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
+}
