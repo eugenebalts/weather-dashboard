@@ -25,7 +25,15 @@ const searchSlice = createSlice({
     builder.addCase(
       getCoordinates.fulfilled,
       (state, { payload }: PayloadAction<GeocodingResponse[]>) => {
-        state.suggestions = payload;
+        const uniquePayload = payload.filter(
+          (item, index, array) =>
+            index ===
+            array.findIndex(
+              (t) => t.name === item.name && t.lat === item.lat && t.lon === item.lon,
+            ),
+        );
+
+        state.suggestions = uniquePayload;
       },
     );
   },

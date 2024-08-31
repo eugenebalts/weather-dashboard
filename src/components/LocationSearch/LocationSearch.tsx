@@ -63,7 +63,7 @@ const LocationSearch = () => {
         <div className={styles.suggestions}>
           {suggestions.map((suggestion) => (
             <Button
-              key={suggestion.name + suggestion.lat}
+              key={suggestion.name + suggestion.lat + suggestion.lon}
               variant='text'
               color='secondary'
               onClick={() => handleClickSuggestion(suggestion)}
