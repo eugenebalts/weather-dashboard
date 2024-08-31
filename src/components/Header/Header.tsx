@@ -6,7 +6,6 @@ const Header = () => (
     <Container>
       <div className={styles.wrapper}>
         <h1>Weather</h1>
-        <button type='button'>Toggle theme</button>
       </div>
     </Container>
   </header>

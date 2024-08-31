@@ -1,19 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SearchState } from './types';
 import getCoordinates from './actions';
+import { GeocodingResponse } from '../../../services/endpoints/geocoding/types';
 
 const initialState: SearchState = {
   search: '',
   suggestions: [],
   isLoading: false,
-  isError: false,
+  error: null,
 };
 
 const searchSlice = createSlice({
   name: 'search',
   initialState,
   reducers: {
-    updateSearch(state, { payload }) {
+    updateSearch(state, { payload }: PayloadAction<string>) {
       state.search = payload;
     },
     clearSuggestions(state) {
@@ -21,9 +22,12 @@ const searchSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    builder.addCase(getCoordinates.fulfilled, (state, { payload }) => {
-      state.suggestions = payload;
-    });
+    builder.addCase(
+      getCoordinates.fulfilled,
+      (state, { payload }: PayloadAction<GeocodingResponse[]>) => {
+        state.suggestions = payload;
+      },
+    );
   },
 });
 

@@ -1,0 +1,45 @@
+@import '../../styles/base/variables';
+
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  border: 1px solid $color-grey;
+  border-radius: 10px;
+}
+
+.search,
+.suggestions > button {
+  padding: 10px 20px !important;
+  width: 100%;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.suggestions {
+  position: absolute;
+  top: calc(100% + 1px);
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: $color-black--tranparent--100;
+  z-index: 10;
+  cursor: pointer;
+
+  & > button {
+    justify-content: flex-start;
+  }
+}
+
+.input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
