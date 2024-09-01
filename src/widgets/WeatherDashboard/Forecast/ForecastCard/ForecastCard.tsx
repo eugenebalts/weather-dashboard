@@ -1,5 +1,5 @@
-import Card from '../../../components/Card/Card';
-import WeatherBrief from '../../WeatherBrief/WeatherBrief';
+import Card from '../../../../components/Card/Card';
+import WeatherBrief from '../../../WeatherBrief/WeatherBrief';
 import { ForecastCardProps } from './ForecastCard.types';
 
 const ForecastCard = ({ forecastItem }: ForecastCardProps) => (

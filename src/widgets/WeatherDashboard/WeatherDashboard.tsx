@@ -2,11 +2,11 @@ import { useSelector } from 'react-redux';
 import { FaSearchLocation } from 'react-icons/fa';
 import { RootState } from '../../redux/store';
 import styles from './WeatherDashboard.module.scss';
-import LocationSearch from '../LocationSearch/LocationSearch';
+import LocationSearch from './LocationSearch/LocationSearch';
 import useGeolocationPosition from '../../hooks/useNavigationLocation';
 import Button from '../../components/Button/Button';
-import CurrentWeather from '../CurrentWeather/CurrentWeather';
-import Forecast from '../Forecast/Forecast';
+import CurrentWeather from './CurrentWeather/CurrentWeather';
+import Forecast from './Forecast/Forecast';
 
 const WeatherDashboard = () => {
   const { currentWeather } = useSelector((state: RootState) => state.weather);

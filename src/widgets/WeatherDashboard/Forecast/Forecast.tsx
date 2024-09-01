@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
-import Section from '../../components/Section/Section';
-import { RootState } from '../../redux/store';
+import Section from '../../../components/Section/Section';
+import { RootState } from '../../../redux/store';
 import styles from './Forecast.module.scss';
-import processForecastData from '../../utils/processForecastData';
+import processForecastData from '../../../utils/processForecastData';
 import ForecastCard from './ForecastCard/ForecastCard';
 
 const Forecast = () => {

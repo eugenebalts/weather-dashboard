@@ -1,15 +1,15 @@
 import { ChangeEvent, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FiSearch } from 'react-icons/fi';
-import { AppDispatch, RootState } from '../../redux/store';
-import { searchActions } from '../../redux/slices/search/searchSlice';
-import getCoordinates from '../../redux/slices/search/actions';
-import useDebounce from '../../hooks/useDebounce';
-import { GeocodingResponse } from '../../services/endpoints/geocoding/types';
-import Button from '../../components/Button/Button';
-import { getCurrentWeather, getFiveDayForecast } from '../../redux/slices/weather/actions';
-import useClickOutside from '../../hooks/useClickOutside';
-import getLocationName from '../../utils/getLocationName';
+import { AppDispatch, RootState } from '../../../redux/store';
+import { searchActions } from '../../../redux/slices/search/searchSlice';
+import getCoordinates from '../../../redux/slices/search/actions';
+import useDebounce from '../../../hooks/useDebounce';
+import { GeocodingResponse } from '../../../services/endpoints/geocoding/types';
+import Button from '../../../components/Button/Button';
+import { getCurrentWeather, getFiveDayForecast } from '../../../redux/slices/weather/actions';
+import useClickOutside from '../../../hooks/useClickOutside';
+import getLocationName from '../../../utils/getLocationName';
 import styles from './LocationSearch.module.scss';
 
 const LocationSearch = () => {

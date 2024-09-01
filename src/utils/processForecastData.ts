@@ -1,13 +1,13 @@
 import { ForecastResponse, Weather } from '../services/endpoints/weather/types';
 import convertUnixDate from './convertUnixDate';
 
-export interface DailyForecastItem {
+export type DailyForecastItem = {
   date: string;
   temp: number;
   tempMin: number;
   tempMax: number;
   weather: Weather;
-}
+};
 
 export type ProcessedForecastData = DailyForecastItem[];
 

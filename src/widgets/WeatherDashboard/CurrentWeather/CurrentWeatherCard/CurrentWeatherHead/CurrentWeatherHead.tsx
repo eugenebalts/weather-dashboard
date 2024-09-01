@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { IoMdAdd } from 'react-icons/io';
-import Button from '../../../../components/Button/Button';
-import Location from '../../../../components/Location/Location';
-import getLocationName from '../../../../utils/getLocationName';
+import Button from '../../../../../components/Button/Button';
+import Location from '../../../../../components/Location/Location';
+import getLocationName from '../../../../../utils/getLocationName';
 import { CurrentWeatherHeadProps } from '../CurrentWeatherCard.types';
 import styles from './CurrentWeatherHead.module.scss';
-import { AppDispatch, RootState } from '../../../../redux/store';
-import { favoriteLocationsActions } from '../../../../redux/slices/favoriteLocations/favoriteLocationsSlice';
-import useCurrentDate from '../../../../hooks/useCurrentDate';
-import WeatherBrief from '../../../WeatherBrief/WeatherBrief';
+import { AppDispatch, RootState } from '../../../../../redux/store';
+import { favoriteLocationsActions } from '../../../../../redux/slices/favoriteLocations/favoriteLocationsSlice';
+import useCurrentDate from '../../../../../hooks/useCurrentDate';
+import WeatherBrief from '../../../../WeatherBrief/WeatherBrief';
 
 const CurrentWeatherHead = ({ weather, fromGeolocation }: CurrentWeatherHeadProps) => {
   const { favoriteLocations } = useSelector((state: RootState) => state.favoriteLocations);
