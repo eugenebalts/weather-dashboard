@@ -8,10 +8,12 @@ const Button = ({
   variant = 'contained',
   color = 'primary',
   disabled = false,
+  disableHover = false,
   onClick,
 }: ButtonProps) => {
   const buttonClasses = clsx(styles.button, styles[variant], styles[color], {
     [styles.disabled]: disabled,
+    [styles['disable-hover']]: disableHover,
   });
 
   const handleClickButton = (event: MouseEvent<HTMLButtonElement>) => {

@@ -11,5 +11,4 @@ export type WeatherState = {
   forecast: ForecastResponse | null;
   isLoading: boolean;
   error: string | null;
-} & Coordinates &
-  GeolocationMetadata;
+} & GeolocationMetadata;

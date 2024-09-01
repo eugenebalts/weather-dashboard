@@ -5,4 +5,5 @@ export type ButtonProps = {
   color?: 'primary' | 'secondary';
   disabled?: boolean;
   onClick?: () => void;
+  disableHover?: boolean;
 } & PropsWithChildren;

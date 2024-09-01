@@ -8,8 +8,6 @@ const initialState: WeatherState = {
   fromGeolocation: false,
   currentWeather: null,
   forecast: null,
-  lat: 0,
-  lon: 0,
   error: null,
   isLoading: false,
 };
@@ -17,7 +15,17 @@ const initialState: WeatherState = {
 const currentWeatherSlice = createSlice({
   name: 'weather',
   initialState,
-  reducers: {},
+  reducers: {
+    resetState(state) {
+      const { fromGeolocation, currentWeather, forecast, error, isLoading } = initialState;
+
+      state.fromGeolocation = fromGeolocation;
+      state.currentWeather = currentWeather;
+      state.forecast = forecast;
+      state.error = error;
+      state.isLoading = isLoading;
+    },
+  },
   extraReducers(builder) {
     builder.addCase(
       getCurrentWeather.fulfilled,
