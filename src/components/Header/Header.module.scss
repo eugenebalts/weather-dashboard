@@ -1,5 +1,10 @@
+@import '../../styles/base/variables';
+
 .wrapper {
+  border-bottom: 3px solid $color-grey;
+}
+
+.content {
   display: flex;
   justify-content: space-between;
-  padding: 1rem 0;
 }

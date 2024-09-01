@@ -4,7 +4,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 300px;
+  max-width: 500px;
+  flex: 1;
   border: 1px solid $color-grey;
   border-radius: 10px;
 }

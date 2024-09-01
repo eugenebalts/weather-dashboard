@@ -2,7 +2,8 @@
 
 .wrapper {
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 1rem;
   width: 100%;
   max-width: $max-container-width;
+  flex-grow: 1;
 }

@@ -16,7 +16,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  padding: 1rem 0;
   font-size: 16px;
   font-family: $font-family-montserrat;
   background-color: $color-white;
@@ -29,12 +28,9 @@ footer {
   flex-shrink: 0;
 }
 
-#root {
+#root,
+main {
   display: flex;
   flex-direction: column;
   flex: 1;
-}
-
-main {
-  flex-grow: 1;
 }

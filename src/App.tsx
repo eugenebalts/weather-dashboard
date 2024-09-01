@@ -1,14 +1,9 @@
 import DefaultLayout from './layouts/DefaultLayout/DefaultLayout';
-import LocationSearch from './widgets/LocationSearch/LocationSearch';
-import WeatherDashboard from './widgets/WeatherDashboard/WeatherDashboard';
-import styles from './App.module.scss';
+import AppView from './views/AppView/AppView';
 
 const App = () => (
   <DefaultLayout>
-    <div className={styles.wrapper}>
-      <LocationSearch />
-      <WeatherDashboard />
-    </div>
+    <AppView />
   </DefaultLayout>
 );
 

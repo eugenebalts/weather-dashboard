@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import Card from '../../components/Card/Card';
-import { RootState } from '../../redux/store';
-import CurrentWeatherHeader from './CurrentWeatherHeader/CurrentWeatherHeader';
+import Card from '../../../components/Card/Card';
+import { RootState } from '../../../redux/store';
+import CurrentWeatherHead from './CurrentWeatherHead/CurrentWeatherHead';
 import CurrentWeatherBody from './CurrentWeatherBody/CurrentWeatherBody';
 
 const CurrentWeatherCard = () => {
@@ -13,7 +13,7 @@ const CurrentWeatherCard = () => {
 
   return (
     <Card
-      header={<CurrentWeatherHeader weather={currentWeather} />}
+      header={<CurrentWeatherHead weather={currentWeather} />}
       body={<CurrentWeatherBody weather={currentWeather} />}
       color='primary'
     />

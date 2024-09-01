@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 import { IoMdAdd } from 'react-icons/io';
-import Button from '../../../components/Button/Button';
-import Location from '../../../components/Location/Location';
-import WeatherIcon from '../../../components/WeatherIcon/WeatherIcon';
-import capitalizeSentence from '../../../utils/capitalizeSentence';
-import formatDegrees from '../../../utils/formatDegrees';
-import getCurrentTimeForTimezone from '../../../utils/getCurrentTimeForTimezone';
-import getLocationName from '../../../utils/getLocationName';
-import styles from './CurrentWeatherHeader.module.scss';
+import Button from '../../../../components/Button/Button';
+import Location from '../../../../components/Location/Location';
+import WeatherIcon from '../../../../components/WeatherIcon/WeatherIcon';
+import capitalizeSentence from '../../../../utils/capitalizeSentence';
+import formatDegrees from '../../../../utils/formatDegrees';
+import getCurrentTimeForTimezone from '../../../../utils/getCurrentTimeForTimezone';
+import getLocationName from '../../../../utils/getLocationName';
 import { CurrentWeatherProps } from '../CurrentWeatherCard.types';
+import styles from './CurrentWeatherHead.module.scss';
 
-const CurrentWeatherHeader = ({ weather }: CurrentWeatherProps) => {
+const CurrentWeatherHead = ({ weather }: CurrentWeatherProps) => {
   const [currentDate, setCurrentDate] = useState<string>('');
 
   useEffect(() => {
@@ -44,4 +44,4 @@ const CurrentWeatherHeader = ({ weather }: CurrentWeatherProps) => {
   );
 };
 
-export default CurrentWeatherHeader;
+export default CurrentWeatherHead;

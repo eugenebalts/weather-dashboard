@@ -2,9 +2,9 @@ import Container from '../Container/Container';
 import styles from './Header.module.scss';
 
 const Header = () => (
-  <header>
+  <header className={styles.wrapper}>
     <Container>
-      <div className={styles.wrapper}>
+      <div className={styles.content}>
         <h1>Weather</h1>
       </div>
     </Container>

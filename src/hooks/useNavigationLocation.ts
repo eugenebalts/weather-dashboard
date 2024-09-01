@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux/store';
 import getCurrentWeather from '../redux/slices/weather/actions';
 
-const useNavigationPosition = () => {
+const useGeolocationPosition = () => {
   const dispatch: AppDispatch = useDispatch();
 
   const getCurrentPosition = () => {
@@ -21,4 +21,4 @@ const useNavigationPosition = () => {
   return { getCurrentPosition };
 };
 
-export default useNavigationPosition;
+export default useGeolocationPosition;
