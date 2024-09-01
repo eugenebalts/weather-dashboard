@@ -6,8 +6,6 @@ import { GeocodingResponse } from '../../../services/endpoints/geocoding/types';
 const initialState: SearchState = {
   search: '',
   suggestions: [],
-  isLoading: false,
-  error: null,
 };
 
 const searchSlice = createSlice({
