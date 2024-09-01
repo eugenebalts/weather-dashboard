@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.description {
+  text-align: center;
+}
+
+.temperature {
+  font-size: 22px;
+
+  &_minmax {
+    display: flex;
+    gap: 5px;
+    font-size: 10px;
+  }
+}

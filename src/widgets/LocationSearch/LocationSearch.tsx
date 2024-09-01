@@ -7,7 +7,7 @@ import getCoordinates from '../../redux/slices/search/actions';
 import useDebounce from '../../hooks/useDebounce';
 import { GeocodingResponse } from '../../services/endpoints/geocoding/types';
 import Button from '../../components/Button/Button';
-import getCurrentWeather from '../../redux/slices/weather/actions';
+import { getCurrentWeather, getFiveDayForecast } from '../../redux/slices/weather/actions';
 import useClickOutside from '../../hooks/useClickOutside';
 import getLocationName from '../../utils/getLocationName';
 import styles from './LocationSearch.module.scss';
@@ -46,7 +46,13 @@ const LocationSearch = () => {
   const handleClickSuggestion = (suggestion: GeocodingResponse) => {
     const { lat, lon } = suggestion;
 
-    dispatch(getCurrentWeather({ lat, lon, fromGeolocation: false }));
+    const coordinates = {
+      lat,
+      lon,
+    };
+
+    dispatch(getCurrentWeather({ ...coordinates, fromGeolocation: false }));
+    dispatch(getFiveDayForecast(coordinates));
 
     setIsMenuOpen(false);
   };

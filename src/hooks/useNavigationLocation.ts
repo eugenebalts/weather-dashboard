@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux/store';
-import getCurrentWeather from '../redux/slices/weather/actions';
+import { getCurrentWeather, getFiveDayForecast } from '../redux/slices/weather/actions';
 
 const useGeolocationPosition = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -10,7 +10,13 @@ const useGeolocationPosition = () => {
       (pos) => {
         const { latitude, longitude } = pos.coords;
 
-        dispatch(getCurrentWeather({ lat: latitude, lon: longitude, fromGeolocation: true }));
+        const coordinates = {
+          lat: latitude,
+          lon: longitude,
+        };
+
+        dispatch(getCurrentWeather({ ...coordinates, fromGeolocation: true }));
+        dispatch(getFiveDayForecast(coordinates));
       },
       () => {
         alert('Failed to get your location. Please enable browser to handle location');

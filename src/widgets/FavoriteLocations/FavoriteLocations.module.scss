@@ -1,14 +1,8 @@
 @import '../../styles/base/variables';
 
-.wrapper,
 .list {
   display: flex;
   flex-direction: column;
-}
-
-.wrapper {
-  gap: 20px;
-  width: 250px;
 }
 
 .list {

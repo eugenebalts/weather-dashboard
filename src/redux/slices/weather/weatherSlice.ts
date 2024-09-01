@@ -1,11 +1,13 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { WeatherState } from './types';
-import getCurrentWeather from './actions';
+import { getCurrentWeather, getFiveDayForecast } from './actions';
 import { GetCurrentWeatherThunkResponse } from './actions/types';
+import { ForecastResponse } from '../../../services/endpoints/weather/types';
 
 const initialState: WeatherState = {
   fromGeolocation: false,
   currentWeather: null,
+  forecast: null,
   lat: 0,
   lon: 0,
   error: null,
@@ -24,6 +26,12 @@ const currentWeatherSlice = createSlice({
 
         state.currentWeather = weatherData;
         state.fromGeolocation = fromGeolocation;
+      },
+    );
+    builder.addCase(
+      getFiveDayForecast.fulfilled,
+      (state, { payload }: PayloadAction<ForecastResponse>) => {
+        state.forecast = payload;
       },
     );
   },

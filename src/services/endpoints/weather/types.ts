@@ -23,7 +23,7 @@ type Sys = {
   sunset: number;
 };
 
-type Weather = {
+export type Weather = {
   id: number;
   main: string;
   description: string;
@@ -50,4 +50,15 @@ export type WeatherResponse = {
   visibility: number;
   weather: Weather[];
   wind: Wind;
+};
+
+export type ForecastItem = {
+  pop: number;
+} & Omit<WeatherResponse, 'base' | 'id' | 'name' | 'cod'>;
+
+export type ForecastResponse = {
+  cod: string;
+  message: number;
+  cnt: number;
+  list: ForecastItem[];
 };

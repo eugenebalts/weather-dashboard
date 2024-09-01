@@ -6,7 +6,7 @@ import FavoriteLocationHead from './FavoriteLocationHead/FavoriteLocationHead';
 import { WeatherResponse } from '../../../services/endpoints/weather/types';
 import weatherApi from '../../../services/endpoints/weather/weatherApi';
 import { AppDispatch } from '../../../redux/store';
-import getCurrentWeather from '../../../redux/slices/weather/actions';
+import { getCurrentWeather, getFiveDayForecast } from '../../../redux/slices/weather/actions';
 import FavoriteLocationBody from './FavoriteLocationBody/FavoriteLocationBody';
 
 const FavoriteLocationCard = ({ coordinatesWithMetadata }: FavoriteLocationCardProps) => {
@@ -30,6 +30,7 @@ const FavoriteLocationCard = ({ coordinatesWithMetadata }: FavoriteLocationCardP
 
   const handleClickCard = () => {
     dispatch(getCurrentWeather(coordinatesWithMetadata));
+    dispatch(getFiveDayForecast(coordinatesWithMetadata));
   };
 
   return (

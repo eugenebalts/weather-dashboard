@@ -6,6 +6,7 @@ import LocationSearch from '../LocationSearch/LocationSearch';
 import useGeolocationPosition from '../../hooks/useNavigationLocation';
 import Button from '../../components/Button/Button';
 import CurrentWeather from '../CurrentWeather/CurrentWeather';
+import Forecast from '../Forecast/Forecast';
 
 const WeatherDashboard = () => {
   const { currentWeather } = useSelector((state: RootState) => state.weather);
@@ -23,7 +24,10 @@ const WeatherDashboard = () => {
         </Button>
       </div>
       {currentWeather ? (
-        <CurrentWeather />
+        <div className={styles.content}>
+          <CurrentWeather />
+          <Forecast />
+        </div>
       ) : (
         <p>
           Enter a city name or confirm your location to get an accurate weather forecast. Don`t know

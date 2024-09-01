@@ -2,15 +2,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IoMdAdd } from 'react-icons/io';
 import Button from '../../../../components/Button/Button';
 import Location from '../../../../components/Location/Location';
-import WeatherIcon from '../../../../components/WeatherIcon/WeatherIcon';
-import capitalizeSentence from '../../../../utils/capitalizeSentence';
-import formatDegrees from '../../../../utils/formatDegrees';
 import getLocationName from '../../../../utils/getLocationName';
 import { CurrentWeatherHeadProps } from '../CurrentWeatherCard.types';
 import styles from './CurrentWeatherHead.module.scss';
 import { AppDispatch, RootState } from '../../../../redux/store';
 import { favoriteLocationsActions } from '../../../../redux/slices/favoriteLocations/favoriteLocationsSlice';
 import useCurrentDate from '../../../../hooks/useCurrentDate';
+import WeatherBrief from '../../../WeatherBrief/WeatherBrief';
 
 const CurrentWeatherHead = ({ weather, fromGeolocation }: CurrentWeatherHeadProps) => {
   const { favoriteLocations } = useSelector((state: RootState) => state.favoriteLocations);
@@ -51,15 +49,13 @@ const CurrentWeatherHead = ({ weather, fromGeolocation }: CurrentWeatherHeadProp
         }
         date={currentDate}
       />
-      <div className={styles.weather}>
-        <p className={styles.description}>{capitalizeSentence(weather.weather[0].description)}</p>
-        <WeatherIcon icon={weather.weather[0].icon} />
-        <p className={styles.temperature}>{formatDegrees(weather.main.temp)}</p>
-        <div className={styles.temperature_minmax}>
-          <p>H: {formatDegrees(weather.main.temp_max)}</p>
-          <p>L: {formatDegrees(weather.main.temp_min)}</p>
-        </div>
-      </div>
+      <WeatherBrief
+        description={weather.weather[0].description}
+        icon={weather.weather[0].icon}
+        temp={weather.main.temp}
+        tempMax={weather.main.temp_max}
+        tempMin={weather.main.temp_min}
+      />
       <div className={styles.button}>
         {!isFavoriteLocation && (
           <Button variant='text' color='secondary' onClick={handleClickAdd}>
