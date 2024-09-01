@@ -1,37 +1,23 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
 import { IoMdAdd } from 'react-icons/io';
 import Button from '../../../../components/Button/Button';
 import Location from '../../../../components/Location/Location';
 import WeatherIcon from '../../../../components/WeatherIcon/WeatherIcon';
 import capitalizeSentence from '../../../../utils/capitalizeSentence';
 import formatDegrees from '../../../../utils/formatDegrees';
-import getCurrentTimeForTimezone from '../../../../utils/getCurrentTimeForTimezone';
 import getLocationName from '../../../../utils/getLocationName';
 import { CurrentWeatherHeadProps } from '../CurrentWeatherCard.types';
 import styles from './CurrentWeatherHead.module.scss';
 import { AppDispatch, RootState } from '../../../../redux/store';
 import { favoriteLocationsActions } from '../../../../redux/slices/favoriteLocations/favoriteLocationsSlice';
+import useCurrentDate from '../../../../hooks/useCurrentDate';
 
 const CurrentWeatherHead = ({ weather, fromGeolocation }: CurrentWeatherHeadProps) => {
-  const [currentDate, setCurrentDate] = useState<string>('');
   const { favoriteLocations } = useSelector((state: RootState) => state.favoriteLocations);
 
+  const currentDate = useCurrentDate(weather.timezone);
+
   const dispatch: AppDispatch = useDispatch();
-
-  useEffect(() => {
-    const UPDATE_INTERVAL = 30000;
-
-    const updateCurrentDate = () => {
-      setCurrentDate(getCurrentTimeForTimezone(weather.timezone));
-    };
-
-    updateCurrentDate();
-
-    const intervalId = setInterval(updateCurrentDate, UPDATE_INTERVAL);
-
-    return () => clearInterval(intervalId);
-  }, [weather.timezone]);
 
   const isFavoriteLocation = favoriteLocations.find((location) => {
     const { coord } = weather;
@@ -42,13 +28,10 @@ const CurrentWeatherHead = ({ weather, fromGeolocation }: CurrentWeatherHeadProp
     );
   });
 
-  console.log(isFavoriteLocation);
-
   const handleClickAdd = () => {
     const { coord } = weather;
 
     if (!isFavoriteLocation) {
-      console.log('adding');
       dispatch(
         favoriteLocationsActions.addLocation({
           ...coord,

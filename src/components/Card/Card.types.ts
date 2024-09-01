@@ -5,4 +5,5 @@ export type CardProps = {
   body: ReactNode;
   variant?: 'outlined' | 'contained';
   color?: 'primary' | 'secondary';
+  onClick?: () => void;
 };

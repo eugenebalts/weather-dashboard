@@ -10,7 +10,7 @@ const useGeolocationPosition = () => {
       (pos) => {
         const { latitude, longitude } = pos.coords;
 
-        dispatch(getCurrentWeather({ lat: latitude, lon: longitude }));
+        dispatch(getCurrentWeather({ lat: latitude, lon: longitude, fromGeolocation: true }));
       },
       () => {
         alert('Failed to get your location. Please enable browser to handle location');

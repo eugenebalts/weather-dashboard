@@ -42,7 +42,7 @@ const LocationSearch = () => {
   const handleClickSuggestion = (suggestion: GeocodingResponse) => {
     const { lat, lon } = suggestion;
 
-    dispatch(getCurrentWeather({ lat, lon }));
+    dispatch(getCurrentWeather({ lat, lon, fromGeolocation: false }));
 
     setIsMenuOpen(false);
   };

@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import styles from './FavoriteLocations.module.scss';
 import { RootState } from '../../redux/store';
+import FavoriteLocationCard from './FavoriteLocationCard/FavoriteLocationCard';
 
 const FavoriteLocations = () => {
   const { favoriteLocations } = useSelector((state: RootState) => state.favoriteLocations);
@@ -8,9 +9,16 @@ const FavoriteLocations = () => {
   return (
     <section className={styles.wrapper}>
       <h2>Favorite Locations</h2>
-      {favoriteLocations.map((location) => (
-        <p key={location.lat}>{location.lat}</p>
-      ))}
+      <ul className={styles.list}>
+        {favoriteLocations.map((location) => (
+          <li className={styles.item} key={location.lat}>
+            <FavoriteLocationCard
+              coordinatesWithMetadata={location}
+              onClick={() => console.log('clicked fav')}
+            />
+          </li>
+        ))}
+      </ul>
     </section>
   );
 };

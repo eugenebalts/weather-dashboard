@@ -1,5 +1,24 @@
 @import '../../styles/base/variables';
 
+.wrapper,
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
 .wrapper {
-  width: 300px;
+  gap: 20px;
+  width: 250px;
+}
+
+.list {
+  gap: 10px;
+}
+
+.item {
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
