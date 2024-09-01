@@ -1,14 +1,13 @@
 @import '../../styles/base/variables';
 
 .wrapper,
-.header,
+.head,
 .body {
   display: flex;
   flex-direction: column;
 }
 
 .wrapper {
-  width: fit-content;
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
@@ -40,12 +39,12 @@
   }
 }
 
-.header,
+.head,
 .body {
   gap: 10px;
   padding: 1rem;
 }
 
-.header {
+.head {
   border-bottom: 1px solid $color-grey;
 }

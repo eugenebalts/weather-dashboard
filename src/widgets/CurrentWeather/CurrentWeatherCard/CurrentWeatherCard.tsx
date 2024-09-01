@@ -13,7 +13,7 @@ const CurrentWeatherCard = () => {
 
   return (
     <Card
-      header={<CurrentWeatherHead weather={currentWeather} />}
+      head={<CurrentWeatherHead weather={currentWeather} />}
       body={<CurrentWeatherBody weather={currentWeather} />}
       color='primary'
     />
