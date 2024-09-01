@@ -1,6 +1,6 @@
 import DefaultLayout from './layouts/DefaultLayout/DefaultLayout';
-import LocationSearch from './components/LocationSearch/LocationSearch';
-import WeatherDashboard from './components/WeatherDashboard/WeatherDashboard';
+import LocationSearch from './widgets/LocationSearch/LocationSearch';
+import WeatherDashboard from './widgets/WeatherDashboard/WeatherDashboard';
 import styles from './App.module.scss';
 
 const App = () => (

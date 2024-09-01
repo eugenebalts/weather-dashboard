@@ -33,6 +33,7 @@
   cursor: pointer;
 
   & > button {
+    border-radius: unset !important;
     justify-content: flex-start;
   }
 }

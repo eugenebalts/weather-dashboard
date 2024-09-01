@@ -6,7 +6,7 @@ import { searchActions } from '../../redux/slices/search/searchSlice';
 import getCoordinates from '../../redux/slices/search/actions';
 import useDebounce from '../../hooks/useDebounce';
 import { GeocodingResponse } from '../../services/endpoints/geocoding/types';
-import Button from '../Button/Button';
+import Button from '../../components/Button/Button';
 import getCurrentWeather from '../../redux/slices/weather/actions';
 import useClickOutside from '../../hooks/useClickOutside';
 import getLocationName from '../../utils/getLocationName';
@@ -15,6 +15,7 @@ import styles from './LocationSearch.module.scss';
 const LocationSearch = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { suggestions } = useSelector((state: RootState) => state.search);
+
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 

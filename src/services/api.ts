@@ -13,6 +13,7 @@ class Api {
     const queryParamsWithApiKey = {
       ...queryParams,
       appid: this.apiKey,
+      units: 'metric',
     };
 
     const queryString: string = new URLSearchParams(queryParamsWithApiKey).toString();
