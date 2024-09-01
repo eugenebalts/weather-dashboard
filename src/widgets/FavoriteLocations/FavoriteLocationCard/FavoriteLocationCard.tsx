@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { ClipLoader } from 'react-spinners';
 import { useDispatch } from 'react-redux';
 import Card from '../../../components/Card/Card';
 import { FavoriteLocationCardProps } from './FavoriteLocationCard.types';
@@ -8,20 +10,32 @@ import weatherApi from '../../../services/endpoints/weather/weatherApi';
 import { AppDispatch } from '../../../redux/store';
 import { getCurrentWeather, getFiveDayForecast } from '../../../redux/slices/weather/actions';
 import FavoriteLocationBody from './FavoriteLocationBody/FavoriteLocationBody';
+import styles from './FavoriteLocationCard.module.scss';
+import ReloadButton from '../../../components/ReloadButton/ReloadButton';
 
 const FavoriteLocationCard = ({ coordinatesWithMetadata }: FavoriteLocationCardProps) => {
   const [weather, setWeather] = useState<WeatherResponse>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
     const fetchCurrentWeather = async () => {
+      setIsLoading(true);
+
       try {
         const res = await weatherApi.getCurrentWeather(coordinatesWithMetadata);
 
         setWeather(res);
+        setError(null);
+        setIsLoading(false);
       } catch (err) {
-        console.error(err);
+        const message = err instanceof Error ? err.message : 'Failed to load Favorite Locations';
+
+        setIsLoading(false);
+        setError(message);
+        toast.error(message);
       }
     };
 
@@ -34,7 +48,9 @@ const FavoriteLocationCard = ({ coordinatesWithMetadata }: FavoriteLocationCardP
   };
 
   return (
-    <>
+    <div className={styles.wrapper}>
+      {isLoading && <ClipLoader />}
+      {error && <ReloadButton onClick={() => console.log('TODO: ADD handler')} />}
       {weather && (
         <Card
           head={
@@ -49,8 +65,8 @@ const FavoriteLocationCard = ({ coordinatesWithMetadata }: FavoriteLocationCardP
           onClick={handleClickCard}
         />
       )}
-      {true && null /* PLACE FOR LOADING AND ERROR HANDLERS */}
-    </>
+      {error && null}
+    </div>
   );
 };
 

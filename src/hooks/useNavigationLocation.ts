@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import { AppDispatch } from '../redux/store';
 import { getCurrentWeather, getFiveDayForecast } from '../redux/slices/weather/actions';
 
@@ -18,8 +19,8 @@ const useGeolocationPosition = () => {
         dispatch(getCurrentWeather({ ...coordinates, fromGeolocation: true }));
         dispatch(getFiveDayForecast(coordinates));
       },
-      () => {
-        alert('Failed to get your location. Please enable browser to handle location');
+      (err) => {
+        toast.error(err.message);
       },
     );
   };

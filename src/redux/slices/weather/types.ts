@@ -1,14 +1,22 @@
-import { Coordinates } from '../../../services/endpoints/geocoding/types';
 import { ForecastResponse, WeatherResponse } from '../../../services/endpoints/weather/types';
 
 export type GeolocationMetadata = {
   fromGeolocation: boolean;
 };
 
-export type WeatherState = {
-  currentWeather: WeatherResponse | null;
-  fromGeolocation: boolean;
-  forecast: ForecastResponse | null;
+type StateWithAsyncHandlers = {
   isLoading: boolean;
   error: string | null;
-} & GeolocationMetadata;
+};
+
+export type WeatherState = {
+  currentWeather: {
+    data: WeatherResponse | null;
+    isLoading: boolean;
+    error: string | null;
+  } & GeolocationMetadata &
+    StateWithAsyncHandlers;
+  forecast: {
+    data: ForecastResponse | null;
+  } & StateWithAsyncHandlers;
+};

@@ -5,11 +5,17 @@ import { GetCurrentWeatherThunkResponse } from './actions/types';
 import { ForecastResponse } from '../../../services/endpoints/weather/types';
 
 const initialState: WeatherState = {
-  fromGeolocation: false,
-  currentWeather: null,
-  forecast: null,
-  error: null,
-  isLoading: false,
+  currentWeather: {
+    fromGeolocation: false,
+    isLoading: false,
+    error: null,
+    data: null,
+  },
+  forecast: {
+    data: null,
+    isLoading: false,
+    error: null,
+  },
 };
 
 const currentWeatherSlice = createSlice({
@@ -17,13 +23,10 @@ const currentWeatherSlice = createSlice({
   initialState,
   reducers: {
     resetState(state) {
-      const { fromGeolocation, currentWeather, forecast, error, isLoading } = initialState;
+      const { currentWeather, forecast } = initialState;
 
-      state.fromGeolocation = fromGeolocation;
       state.currentWeather = currentWeather;
       state.forecast = forecast;
-      state.error = error;
-      state.isLoading = isLoading;
     },
   },
   extraReducers(builder) {
@@ -32,16 +35,39 @@ const currentWeatherSlice = createSlice({
       (state, { payload }: PayloadAction<GetCurrentWeatherThunkResponse>) => {
         const { weatherData, fromGeolocation } = payload;
 
-        state.currentWeather = weatherData;
-        state.fromGeolocation = fromGeolocation;
+        state.currentWeather.isLoading = false;
+        state.currentWeather.data = weatherData;
+        state.currentWeather.fromGeolocation = fromGeolocation;
       },
     );
+    builder.addCase(getCurrentWeather.pending, (state) => {
+      state.currentWeather.data = null;
+      state.forecast.data = null;
+      state.currentWeather.isLoading = true;
+      state.currentWeather.error = null;
+    });
+    builder.addCase(getCurrentWeather.rejected, (state, payload) => {
+      const { message } = payload.error;
+      state.currentWeather.error = message ?? 'Failed to get Current Weather';
+      state.currentWeather.isLoading = false;
+    });
     builder.addCase(
       getFiveDayForecast.fulfilled,
       (state, { payload }: PayloadAction<ForecastResponse>) => {
-        state.forecast = payload;
+        state.forecast.data = payload;
+        state.forecast.error = null;
+        state.forecast.isLoading = false;
       },
     );
+    builder.addCase(getFiveDayForecast.pending, (state) => {
+      state.forecast.data = null;
+      state.forecast.isLoading = true;
+      state.forecast.error = null;
+    });
+    builder.addCase(getFiveDayForecast.rejected, (state) => {
+      state.forecast.isLoading = false;
+      state.forecast.error = 'Error'; // TODO: HADNLE CASE;
+    });
   },
 });
 

@@ -8,7 +8,7 @@ const FavoriteLocations = () => {
   const { favoriteLocations } = useSelector((state: RootState) => state.favoriteLocations);
 
   return (
-    <Section maxWidth='250px'>
+    <Section width='250px'>
       <h2>Favorite Locations</h2>
       <ul className={styles.list}>
         {favoriteLocations.map((location) => (
