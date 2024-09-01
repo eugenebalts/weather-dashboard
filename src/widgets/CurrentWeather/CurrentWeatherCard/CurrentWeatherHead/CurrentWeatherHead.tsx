@@ -55,6 +55,10 @@ const CurrentWeatherHead = ({ weather, fromGeolocation }: CurrentWeatherHeadProp
         <p className={styles.description}>{capitalizeSentence(weather.weather[0].description)}</p>
         <WeatherIcon icon={weather.weather[0].icon} />
         <p className={styles.temperature}>{formatDegrees(weather.main.temp)}</p>
+        <div className={styles.temperature_minmax}>
+          <p>H: {formatDegrees(weather.main.temp_max)}</p>
+          <p>L: {formatDegrees(weather.main.temp_min)}</p>
+        </div>
       </div>
       <div className={styles.button}>
         {!isFavoriteLocation && (
