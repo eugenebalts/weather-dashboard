@@ -1,12 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Coordinates } from '../../../../services/endpoints/geocoding/types';
 import weatherApi from '../../../../services/endpoints/weather/weatherApi';
+import { CoordinatesWithMetadata } from './types';
 
 const getCurrentWeather = createAsyncThunk(
   'weather/getCurrentWeather',
-  async (coordinates: Coordinates) => {
+  async (coordinatesWithMetadata: CoordinatesWithMetadata) => {
+    const { fromGeolocation, ...coordinates } = coordinatesWithMetadata;
+
     const res = await weatherApi.getCurrentWeather(coordinates);
-    return res;
+
+    return {
+      weatherData: res,
+      fromGeolocation: Boolean(fromGeolocation),
+    };
   },
 );
 

@@ -1,11 +1,11 @@
 import { FaWind, FaWater } from 'react-icons/fa';
 import { WiBarometer } from 'react-icons/wi';
-import { CurrentWeatherProps } from '../CurrentWeatherCard.types';
+import { CurrentWeatherBodyProps } from '../CurrentWeatherCard.types';
 import styles from './CurrentWeatherBody.module.scss';
 
 const ICON_SIZE = '3rem';
 
-const CurrentWeatherBody = ({ weather }: CurrentWeatherProps) => {
+const CurrentWeatherBody = ({ weather }: CurrentWeatherBodyProps) => {
   const bodyList = [
     {
       name: 'Humidity',

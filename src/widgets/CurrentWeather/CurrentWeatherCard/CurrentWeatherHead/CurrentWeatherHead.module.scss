@@ -4,8 +4,8 @@
 }
 
 .wrapper {
+  position: relative;
   gap: 30px;
-  justify-content: space-between;
 }
 
 .weather {
@@ -18,5 +18,7 @@
 }
 
 .button {
-  align-self: flex-start;
+  position: absolute;
+  right: 0;
+  top: 0;
 }

@@ -5,7 +5,7 @@ import CurrentWeatherHead from './CurrentWeatherHead/CurrentWeatherHead';
 import CurrentWeatherBody from './CurrentWeatherBody/CurrentWeatherBody';
 
 const CurrentWeatherCard = () => {
-  const { currentWeather } = useSelector((state: RootState) => state.weather);
+  const { currentWeather, fromGeolocation } = useSelector((state: RootState) => state.weather);
 
   if (!currentWeather) {
     return null;
@@ -13,7 +13,7 @@ const CurrentWeatherCard = () => {
 
   return (
     <Card
-      head={<CurrentWeatherHead weather={currentWeather} />}
+      head={<CurrentWeatherHead weather={currentWeather} fromGeolocation={fromGeolocation} />}
       body={<CurrentWeatherBody weather={currentWeather} />}
       color='primary'
     />
