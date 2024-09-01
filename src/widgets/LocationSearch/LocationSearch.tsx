@@ -26,11 +26,15 @@ const LocationSearch = () => {
   });
 
   const debouncedSearch = useDebounce((value: string) => {
-    if (value) {
-      return dispatch(getCoordinates(value));
+    if (!value) {
+      return dispatch(searchActions.clearSuggestions());
     }
 
-    return dispatch(searchActions.clearSuggestions());
+    if (!isMenuOpen) {
+      setIsMenuOpen(true);
+    }
+
+    return dispatch(getCoordinates(value));
   }, 500);
 
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
