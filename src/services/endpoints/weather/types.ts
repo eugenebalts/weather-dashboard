@@ -1,21 +1,5 @@
 import { Coordinates } from '../geocoding/types';
 
-export type WeatherResponse = {
-  base: string;
-  clouds: Clouds;
-  cod: number;
-  coord: Coordinates;
-  dt: number;
-  id: number;
-  main: MainWeather;
-  name: string;
-  sys: Sys;
-  timezone: number;
-  visibility: number;
-  weather: Weather[];
-  wind: Wind;
-};
-
 type Clouds = {
   all: number;
 };
@@ -50,4 +34,20 @@ type Wind = {
   speed: number;
   deg: number;
   gust?: number;
+};
+
+export type WeatherResponse = {
+  base: string;
+  clouds: Clouds;
+  cod: number;
+  coord: Coordinates;
+  dt: number;
+  id: number;
+  main: MainWeather;
+  name: string;
+  sys: Sys;
+  timezone: number;
+  visibility: number;
+  weather: Weather[];
+  wind: Wind;
 };
