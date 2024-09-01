@@ -1,5 +1,6 @@
 .wrapper,
-.content {
+.content,
+.welcome {
   display: flex;
   flex-direction: column;
 }
@@ -12,6 +13,8 @@
 
 .head {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 10px;
 }
 
@@ -23,4 +26,31 @@
 
 .content {
   gap: 30px;
+}
+
+.welcome {
+  gap: 10px;
+}
+
+.arrows {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.welcome-message {
+  font-weight: 500;
+  font-size: 18px;
+
+  & > span {
+    font-weight: 700;
+  }
 }
