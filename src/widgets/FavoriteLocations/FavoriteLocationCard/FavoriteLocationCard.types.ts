@@ -2,5 +2,4 @@ import { CoordinatesWithMetadata } from '../../../redux/slices/weather/actions/t
 
 export type FavoriteLocationCardProps = {
   coordinatesWithMetadata: CoordinatesWithMetadata;
-  onClick: () => void;
 };

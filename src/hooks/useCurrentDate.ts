@@ -19,7 +19,7 @@ const useCurrentDate = (
     const intervalId = setInterval(updateCurrentDate, updateIntervalMs);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [timezoneSec, updateIntervalMs]);
 
   return currentDate;
 };

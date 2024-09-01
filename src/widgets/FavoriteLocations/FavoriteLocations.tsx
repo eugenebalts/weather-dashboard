@@ -12,10 +12,7 @@ const FavoriteLocations = () => {
       <ul className={styles.list}>
         {favoriteLocations.map((location) => (
           <li className={styles.item} key={location.lat}>
-            <FavoriteLocationCard
-              coordinatesWithMetadata={location}
-              onClick={() => console.log('clicked fav')}
-            />
+            <FavoriteLocationCard coordinatesWithMetadata={location} />
           </li>
         ))}
       </ul>
