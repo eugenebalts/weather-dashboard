@@ -1,11 +1,11 @@
 import CurrentWeatherCard from './CurrentWeatherCard/CurrentWeatherCard';
-import styles from './CurrentWeather.module.scss';
+import Section from '../../components/Section/Section';
 
 const CurrentWeather = () => (
-  <section className={styles.wrapper}>
+  <Section>
     <h2>Current Weather</h2>
     <CurrentWeatherCard />
-  </section>
+  </Section>
 );
 
 export default CurrentWeather;

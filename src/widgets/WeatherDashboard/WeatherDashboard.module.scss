@@ -1,6 +1,10 @@
-.wrapper {
+.wrapper,
+.content {
   display: flex;
   flex-direction: column;
+}
+
+.wrapper {
   gap: 20px;
   flex: 1;
   height: 100%;
@@ -15,4 +19,8 @@
   display: flex;
   gap: 10px;
   align-items: center;
+}
+
+.content {
+  gap: 30px;
 }

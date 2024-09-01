@@ -2,12 +2,13 @@ import { useSelector } from 'react-redux';
 import styles from './FavoriteLocations.module.scss';
 import { RootState } from '../../redux/store';
 import FavoriteLocationCard from './FavoriteLocationCard/FavoriteLocationCard';
+import Section from '../../components/Section/Section';
 
 const FavoriteLocations = () => {
   const { favoriteLocations } = useSelector((state: RootState) => state.favoriteLocations);
 
   return (
-    <section className={styles.wrapper}>
+    <Section maxWidth='250px'>
       <h2>Favorite Locations</h2>
       <ul className={styles.list}>
         {favoriteLocations.map((location) => (
@@ -16,7 +17,7 @@ const FavoriteLocations = () => {
           </li>
         ))}
       </ul>
-    </section>
+    </Section>
   );
 };
 

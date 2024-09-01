@@ -7,7 +7,7 @@ import { WeatherResponse } from '../../../services/endpoints/weather/types';
 import weatherApi from '../../../services/endpoints/weather/weatherApi';
 import { AppDispatch } from '../../../redux/store';
 import getCurrentWeather from '../../../redux/slices/weather/actions';
-import FavoriteLocationBody from './FavoriteLocationBody/FavoritLocationBody';
+import FavoriteLocationBody from './FavoriteLocationBody/FavoriteLocationBody';
 
 const FavoriteLocationCard = ({ coordinatesWithMetadata }: FavoriteLocationCardProps) => {
   const [weather, setWeather] = useState<WeatherResponse>();
