@@ -40,6 +40,7 @@ const FavoriteLocationCard = ({ coordinatesWithMetadata }: FavoriteLocationCardP
             <FavoriteLocationHead
               fromGeolocation={coordinatesWithMetadata.fromGeolocation}
               weather={weather}
+              initialCoordinates={coordinatesWithMetadata}
             />
           }
           body={<FavoriteLocationBody weather={weather} />}
