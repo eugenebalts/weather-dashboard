@@ -7,10 +7,10 @@ import getCoordinates from '../../../redux/slices/search/actions';
 import useDebounce from '../../../hooks/useDebounce';
 import { GeocodingResponse } from '../../../services/endpoints/geocoding/types';
 import Button from '../../../components/Button/Button';
-import { getCurrentWeather, getFiveDayForecast } from '../../../redux/slices/weather/actions';
 import useClickOutside from '../../../hooks/useClickOutside';
 import getLocationName from '../../../utils/getLocationName';
 import styles from './LocationSearch.module.scss';
+import useFetchWeatherDashboard from '../../../hooks/useFetchWeatherDashboard';
 
 const LocationSearch = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,6 +18,8 @@ const LocationSearch = () => {
 
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const { fetchWeatherDashboard } = useFetchWeatherDashboard();
 
   const dispatch: AppDispatch = useDispatch();
 
@@ -51,8 +53,7 @@ const LocationSearch = () => {
       lon,
     };
 
-    dispatch(getCurrentWeather({ ...coordinates, fromGeolocation: false }));
-    dispatch(getFiveDayForecast(coordinates));
+    fetchWeatherDashboard({ ...coordinates, fromGeolocation: false });
 
     setIsMenuOpen(false);
   };

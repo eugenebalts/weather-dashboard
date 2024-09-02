@@ -5,23 +5,37 @@ import { Coordinates } from '../../../../services/endpoints/geocoding/types';
 
 export const getCurrentWeather = createAsyncThunk(
   'weather/getCurrentWeather',
-  async (coordinatesWithMetadata: CoordinatesWithMetadata) => {
-    const { fromGeolocation, ...coordinates } = coordinatesWithMetadata;
+  async (coordinatesWithMetadata: CoordinatesWithMetadata, { rejectWithValue }) => {
+    try {
+      const { fromGeolocation, ...coordinates } = coordinatesWithMetadata;
 
-    const res = await weatherApi.getCurrentWeather(coordinates);
+      const res = await weatherApi.getCurrentWeather(coordinates);
 
-    return {
-      weatherData: res,
-      fromGeolocation: Boolean(fromGeolocation),
-    };
+      return {
+        weatherData: res,
+        fromGeolocation,
+      };
+    } catch {
+      return rejectWithValue({
+        message: 'Failed to get Current Weather',
+        coordinatesWithMetadata,
+      });
+    }
   },
 );
 
 export const getFiveDayForecast = createAsyncThunk(
   'weather/getFiveDayForecast',
-  async (coordinates: Coordinates) => {
-    const res = await weatherApi.getFiveDayForecast(coordinates);
+  async (coordinates: Coordinates, { rejectWithValue }) => {
+    try {
+      const res = await weatherApi.getFiveDayForecast(coordinates);
 
-    return res;
+      return res;
+    } catch {
+      return rejectWithValue({
+        message: 'Failed to get Five Day Forecast',
+        coordinates,
+      });
+    }
   },
 );

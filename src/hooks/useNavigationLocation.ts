@@ -1,23 +1,22 @@
-import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { AppDispatch } from '../redux/store';
-import { getCurrentWeather, getFiveDayForecast } from '../redux/slices/weather/actions';
+import { CoordinatesWithMetadata } from '../redux/slices/weather/actions/types';
+import useFetchWeatherDashboard from './useFetchWeatherDashboard';
 
 const useGeolocationPosition = () => {
-  const dispatch: AppDispatch = useDispatch();
+  const { fetchWeatherDashboard } = useFetchWeatherDashboard();
 
   const getCurrentPosition = () => {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const { latitude, longitude } = pos.coords;
 
-        const coordinates = {
+        const coordinatesWithMetadata: CoordinatesWithMetadata = {
           lat: latitude,
           lon: longitude,
+          fromGeolocation: true,
         };
 
-        dispatch(getCurrentWeather({ ...coordinates, fromGeolocation: true }));
-        dispatch(getFiveDayForecast(coordinates));
+        fetchWeatherDashboard(coordinatesWithMetadata);
       },
       (err) => {
         toast.error(err.message);

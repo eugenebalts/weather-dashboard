@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { WeatherState } from './types';
+import { CurrentWeatherError, ForecastError, WeatherState } from './types';
 import { getCurrentWeather, getFiveDayForecast } from './actions';
 import { GetCurrentWeatherThunkResponse } from './actions/types';
 import { ForecastResponse } from '../../../services/endpoints/weather/types';
@@ -46,9 +46,10 @@ const currentWeatherSlice = createSlice({
       state.currentWeather.isLoading = true;
       state.currentWeather.error = null;
     });
-    builder.addCase(getCurrentWeather.rejected, (state, payload) => {
-      const { message } = payload.error;
-      state.currentWeather.error = message ?? 'Failed to get Current Weather';
+    builder.addCase(getCurrentWeather.rejected, (state, { payload }) => {
+      const error = payload as CurrentWeatherError;
+
+      state.currentWeather.error = error;
       state.currentWeather.isLoading = false;
     });
     builder.addCase(
@@ -64,9 +65,11 @@ const currentWeatherSlice = createSlice({
       state.forecast.isLoading = true;
       state.forecast.error = null;
     });
-    builder.addCase(getFiveDayForecast.rejected, (state) => {
+    builder.addCase(getFiveDayForecast.rejected, (state, { payload }) => {
+      const error = payload as ForecastError;
+
       state.forecast.isLoading = false;
-      state.forecast.error = 'Error'; // TODO: HADNLE CASE;
+      state.forecast.error = error;
     });
   },
 });

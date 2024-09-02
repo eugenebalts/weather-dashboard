@@ -12,8 +12,9 @@ import Button from '../../components/Button/Button';
 import CurrentWeather from './CurrentWeather/CurrentWeather';
 import Forecast from './Forecast/Forecast';
 import ReloadButton from '../../components/ReloadButton/ReloadButton';
+import useFetchWeatherDashboard from '../../hooks/useFetchWeatherDashboard';
 
-const ICONS_SIZE = '2rem';
+const ICON_SIZE = '2rem';
 
 const WeatherDashboard = () => {
   const { data, isLoading, error } = useSelector(
@@ -21,10 +22,11 @@ const WeatherDashboard = () => {
   );
 
   const { getCurrentPosition } = useGeolocationPosition();
+  const { fetchWeatherDashboard } = useFetchWeatherDashboard();
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      toast.error(error.message);
     }
   }, [error]);
 
@@ -34,15 +36,15 @@ const WeatherDashboard = () => {
         <LocationSearch />
         <Button variant='text' onClick={getCurrentPosition}>
           <p className={styles['location-button']}>
-            <TbLocation size={ICONS_SIZE} />
+            <TbLocation size={ICON_SIZE} />
           </p>
         </Button>
       </div>
       {!data && !isLoading && !error && (
         <div className={styles.welcome}>
           <p className={styles.arrows}>
-            <FaLongArrowAltUp className={styles.red} size={ICONS_SIZE} />
-            <FaLongArrowAltUp className={styles.green} size={ICONS_SIZE} />
+            <FaLongArrowAltUp className={styles.red} size={ICON_SIZE} />
+            <FaLongArrowAltUp className={styles.green} size={ICON_SIZE} />
           </p>
           <p className={styles['welcome-message']}>
             <span className={styles.red}>Enter a location name </span> or{' '}
@@ -54,7 +56,11 @@ const WeatherDashboard = () => {
       <div className={styles.content}>
         {isLoading && <ClipLoader />}
         {error && (
-          <ReloadButton onClick={() => console.log('Reload page with Coordinates')} /* TEMP  */ />
+          <ReloadButton
+            onClick={() => {
+              fetchWeatherDashboard(error.coordinatesWithMetadata);
+            }}
+          />
         )}
         {data && (
           <>

@@ -1,56 +1,51 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { ClipLoader } from 'react-spinners';
-import { useDispatch } from 'react-redux';
 import Card from '../../../components/Card/Card';
 import { FavoriteLocationCardProps } from './FavoriteLocationCard.types';
 import FavoriteLocationHead from './FavoriteLocationHead/FavoriteLocationHead';
 import { WeatherResponse } from '../../../services/endpoints/weather/types';
 import weatherApi from '../../../services/endpoints/weather/weatherApi';
-import { AppDispatch } from '../../../redux/store';
-import { getCurrentWeather, getFiveDayForecast } from '../../../redux/slices/weather/actions';
 import FavoriteLocationBody from './FavoriteLocationBody/FavoriteLocationBody';
 import styles from './FavoriteLocationCard.module.scss';
 import ReloadButton from '../../../components/ReloadButton/ReloadButton';
+import useFetchWeatherDashboard from '../../../hooks/useFetchWeatherDashboard';
 
 const FavoriteLocationCard = ({ coordinatesWithMetadata }: FavoriteLocationCardProps) => {
-  const [weather, setWeather] = useState<WeatherResponse>();
+  const [weather, setWeather] = useState<WeatherResponse | null>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  const dispatch: AppDispatch = useDispatch();
+  const { fetchWeatherDashboard } = useFetchWeatherDashboard();
 
-  useEffect(() => {
-    const fetchCurrentWeather = async () => {
-      setIsLoading(true);
+  const fetchCurrentWeather = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
+    setWeather(null);
 
-      try {
-        const res = await weatherApi.getCurrentWeather(coordinatesWithMetadata);
+    try {
+      const res = await weatherApi.getCurrentWeather(coordinatesWithMetadata);
 
-        setWeather(res);
-        setError(null);
-        setIsLoading(false);
-      } catch (err) {
-        const message = err instanceof Error ? err.message : 'Failed to load Favorite Locations';
+      setWeather(res);
+      setError(null);
+      setIsLoading(false);
+    } catch {
+      const message = 'Failed to load Favorite Location';
 
-        setIsLoading(false);
-        setError(message);
-        toast.error(message);
-      }
-    };
-
-    fetchCurrentWeather();
+      setIsLoading(false);
+      setError(message);
+      toast.error(message);
+    }
   }, [coordinatesWithMetadata]);
 
-  const handleClickCard = () => {
-    dispatch(getCurrentWeather(coordinatesWithMetadata));
-    dispatch(getFiveDayForecast(coordinatesWithMetadata));
-  };
+  useEffect(() => {
+    fetchCurrentWeather();
+  }, [coordinatesWithMetadata]);
 
   return (
     <div className={styles.wrapper}>
       {isLoading && <ClipLoader />}
-      {error && <ReloadButton onClick={() => console.log('TODO: ADD handler')} />}
+      {error && <ReloadButton onClick={fetchCurrentWeather} />}
       {weather && (
         <Card
           head={
@@ -62,7 +57,7 @@ const FavoriteLocationCard = ({ coordinatesWithMetadata }: FavoriteLocationCardP
           }
           body={<FavoriteLocationBody weather={weather} />}
           color='secondary'
-          onClick={handleClickCard}
+          onClick={() => fetchWeatherDashboard(coordinatesWithMetadata)}
         />
       )}
       {error && null}
