@@ -4,7 +4,6 @@ import getCoordinates from './actions';
 import { GeocodingResponse } from '../../../services/endpoints/geocoding/types';
 
 const initialState: SearchState = {
-  search: '',
   suggestions: [],
 };
 
@@ -12,9 +11,6 @@ const searchSlice = createSlice({
   name: 'search',
   initialState,
   reducers: {
-    updateSearch(state, { payload }: PayloadAction<string>) {
-      state.search = payload;
-    },
     clearSuggestions(state) {
       state.suggestions = [];
     },
