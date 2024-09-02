@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import '@testing-library/jest-dom';
 import { weatherReducer } from './weatherSlice';
-import { getCurrentWeather } from './actions';
+import { getCurrentWeather, getFiveDayForecast } from './actions';
 import { RootState } from '../../store';
 import weatherApi from '../../../services/endpoints/weather/weatherApi';
 
@@ -57,5 +57,36 @@ describe('currentWeatherSlice', () => {
     expect(state.weather.currentWeather.data).toBe(null);
     expect(state.weather.currentWeather.fromGeolocation).toBe(mockCoordinatesWithMetadata.fromGeolocation);
     expect(state.weather.currentWeather.error).toEqual(mockError);
+  });
+  it('handles getFiveDayForecast.fulfilled action', async () => {
+    const mockForecastData = {
+      daily: [{ date: '2024-09-01', temperature: 22, description: 'Sunny' }],
+    };
+
+    (weatherApi.getFiveDayForecast as jest.Mock).mockResolvedValue(mockForecastData);
+
+    await store.dispatch(getFiveDayForecast(mockCoordinatesWithMetadata) as any);
+
+    const state = store.getState() as RootState;
+
+    expect(state.weather.forecast.isLoading).toBe(false);
+    expect(state.weather.forecast.data).toEqual(mockForecastData);
+    expect(state.weather.forecast.error).toBe(null);
+  });
+  it('handles getFiveDayForecast.rejected action', async () => {
+    const mockError = {
+      message: 'Failed to get Five Day Forecast',
+      coordinates: mockCoordinatesWithMetadata,
+    };
+
+    (weatherApi.getFiveDayForecast as jest.Mock).mockRejectedValue(mockError);
+
+    await store.dispatch(getFiveDayForecast(mockCoordinatesWithMetadata) as any);
+
+    const state = store.getState() as RootState;
+
+    expect(state.weather.forecast.isLoading).toBe(false);
+    expect(state.weather.forecast.data).toBe(null);
+    expect(state.weather.forecast.error).toEqual(mockError);
   });
 });
