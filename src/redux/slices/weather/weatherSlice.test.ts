@@ -10,6 +10,8 @@ jest.mock('../../../services/endpoints/weather/weatherApi', () => ({
   getFiveDayForecast: jest.fn(),
 }));
 
+const mockCoordinatesWithMetadata = { lat: 1.2, lon: 3.4, fromGeolocation: false };
+
 describe('currentWeatherSlice', () => {
   let store: ReturnType<typeof configureStore>;
 
@@ -22,25 +24,38 @@ describe('currentWeatherSlice', () => {
   });
 
   it('handles getCurrentWeather.fulfilled action', async () => {
-    const mockWeatherData = {};
+    const mockWeatherData = {
+      temperature: 20,
+      description: 'Clear sky',
+    };
     const mockFromGeolocation = true;
-
-    const payload = { weatherData: mockWeatherData, fromGeolocation: mockFromGeolocation };
 
     (weatherApi.getCurrentWeather as jest.Mock).mockResolvedValue(mockWeatherData);
 
-    await store.dispatch(
-      getCurrentWeather({
-        lat: 1.2,
-        lon: 3.4,
-        fromGeolocation: mockFromGeolocation,
-      }) as any,
-    );
+    await store.dispatch(getCurrentWeather(mockCoordinatesWithMetadata) as any);
 
     const state = store.getState() as RootState;
 
     expect(state.weather.currentWeather.isLoading).toBe(false);
     expect(state.weather.currentWeather.data).toEqual(mockWeatherData);
-    expect(state.weather.currentWeather.fromGeolocation).toBe(mockFromGeolocation);
+    expect(state.weather.currentWeather.fromGeolocation).toBe(mockCoordinatesWithMetadata.fromGeolocation);
+  });
+
+  it('handles getCurrentWeather.rejected action', async () => {
+    const mockError = {
+      coordinatesWithMetadata: mockCoordinatesWithMetadata,
+      message: 'Failed to get Current Weather',
+    };
+
+    (weatherApi.getCurrentWeather as jest.Mock).mockRejectedValue(mockError);
+
+    await store.dispatch(getCurrentWeather(mockCoordinatesWithMetadata) as any);
+
+    const state = store.getState() as RootState;
+
+    expect(state.weather.currentWeather.isLoading).toBe(false);
+    expect(state.weather.currentWeather.data).toBe(null);
+    expect(state.weather.currentWeather.fromGeolocation).toBe(mockCoordinatesWithMetadata.fromGeolocation);
+    expect(state.weather.currentWeather.error).toEqual(mockError);
   });
 });
