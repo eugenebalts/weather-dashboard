@@ -51,9 +51,10 @@ const LocationSearch = () => {
     const coordinates = {
       lat,
       lon,
+      fromGeolocation: false,
     };
 
-    fetchWeatherDashboard({ ...coordinates, fromGeolocation: false });
+    fetchWeatherDashboard(coordinates);
 
     setIsMenuOpen(false);
   };

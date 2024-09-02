@@ -24,7 +24,6 @@ export type Weather = {
 
 export type DailyForecastItem = {
   date: string;
-  temp: number;
   tempMin: number;
   tempMax: number;
   weather: Weather;

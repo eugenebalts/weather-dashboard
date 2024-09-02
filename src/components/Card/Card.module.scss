@@ -13,6 +13,13 @@
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
+  transition: filter 0.3s ease;
+
+  @include hover {
+    &:hover {
+      filter: brightness(1.1);
+    }
+  }
 }
 
 .contained {
@@ -49,4 +56,8 @@
 
 .head {
   border-bottom: 1px solid $color-grey;
+}
+
+.body {
+  flex: 1;
 }

@@ -12,12 +12,8 @@ const Header = () => {
     <header className={styles.wrapper}>
       <Container>
         <div className={styles.content}>
-          <h1>
-            <Button
-              variant='text'
-              disableHover
-              onClick={() => dispatch(weatherActions.resetState())}
-            >
+          <h1 className={styles.title}>
+            <Button variant='text' disableHover onClick={() => dispatch(weatherActions.resetState())}>
               Weather
             </Button>
           </h1>

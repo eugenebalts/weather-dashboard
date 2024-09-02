@@ -38,6 +38,12 @@ const FavoriteLocationCard = ({ coordinatesWithMetadata }: FavoriteLocationCardP
     }
   }, [coordinatesWithMetadata]);
 
+  const handleClickCard = () => {
+    fetchWeatherDashboard(coordinatesWithMetadata);
+
+    document.body.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  };
+
   useEffect(() => {
     fetchCurrentWeather();
   }, [coordinatesWithMetadata]);
@@ -57,7 +63,7 @@ const FavoriteLocationCard = ({ coordinatesWithMetadata }: FavoriteLocationCardP
           }
           body={<FavoriteLocationBody weather={weather} />}
           color='secondary'
-          onClick={() => fetchWeatherDashboard(coordinatesWithMetadata)}
+          onClick={handleClickCard}
         />
       )}
       {error && null}

@@ -8,7 +8,7 @@ const WeatherBrief = ({ description, icon, temp, tempMax, tempMin }: WeatherBrie
   <div className={styles.wrapper}>
     <p className={styles.description}>{capitalizeSentence(description)}</p>
     <WeatherIcon icon={icon} />
-    <p className={styles.temperature}>{formatDegrees(temp)}</p>
+    {temp !== undefined && <p className={styles.temperature}>{formatDegrees(temp)}</p>}
     <div className={styles.temperature_minmax}>
       <p>H: {formatDegrees(tempMax)}</p>
       <p>L: {formatDegrees(tempMin)}</p>

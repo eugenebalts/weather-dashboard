@@ -3,7 +3,7 @@ import { CurrentLocationProps } from './Location.types';
 
 const Location = ({ location, date }: CurrentLocationProps) => (
   <div className={styles.wrapper}>
-    <div className={styles.location}>{location}</div>
+    <p className={styles.location}>{location}</p>
     {date ?? <p className={styles.date}>{date}</p>}
   </div>
 );

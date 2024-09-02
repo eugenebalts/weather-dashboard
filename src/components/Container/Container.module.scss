@@ -2,8 +2,12 @@
 
 .wrapper {
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1rem 2rem;
   width: 100%;
   max-width: $max-container-width;
   flex-grow: 1;
+
+  @include mobile {
+    padding: 1rem;
+  }
 }

@@ -1,7 +1,7 @@
 export type WeatherBriefProps = {
   description: string;
   icon: string;
-  temp: number;
+  temp?: number;
   tempMax: number;
   tempMin: number;
 };

@@ -11,7 +11,6 @@ const processForecastData = (data: ForecastResponse): ProcessedForecastData => {
     if (!dailyForecastMap[dayKey]) {
       dailyForecastMap[dayKey] = {
         date: dayKey,
-        temp: item.main.temp,
         tempMin: item.main.temp,
         tempMax: item.main.temp,
         weather: item.weather[0],

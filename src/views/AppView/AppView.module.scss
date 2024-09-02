@@ -1,5 +1,12 @@
+@import '../../styles/base/variables';
+
 .wrapper {
   display: flex;
   justify-content: space-between;
   gap: 100px;
+
+  @include laptop {
+    flex-direction: column;
+    gap: 30px;
+  }
 }

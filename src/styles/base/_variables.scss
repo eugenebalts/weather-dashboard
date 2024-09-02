@@ -3,6 +3,10 @@
 // BREAKPOINTS
 $max-container-width: 1220px;
 
+$laptop-width: 1024px;
+$tablet-width: 768px;
+$mobile-width: 500px;
+
 // FONTS
 $font-family-montserrat: 'Montserrat', sans-serif;
 
@@ -15,3 +19,62 @@ $color-white: #ffffff;
 $color-grey: #cccccc;
 $color-black--tranparent--100: rgba(0, 0, 0, 0.1);
 $color-black--tranparent--200: rgba(0, 0, 0, 0.2);
+
+// MEDIA
+@mixin laptop {
+  @media (max-width: $laptop-width) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $mobile-width) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    @content;
+  }
+}
+
+@mixin touch-device {
+  @media (hover: none) {
+    @content;
+  }
+}
+
+// FONTS
+
+@mixin font-h1 {
+  font-size: 26px;
+  font-weight: 700;
+
+  @include tablet {
+    font-size: 22px;
+  }
+
+  @include mobile {
+    font-size: 20px;
+  }
+}
+
+@mixin font-h2 {
+  font-size: 22px;
+  font-weight: 700;
+
+  @include tablet {
+    font-size: 20px;
+  }
+
+  @include mobile {
+    font-size: 18px;
+  }
+}

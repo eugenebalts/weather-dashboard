@@ -9,7 +9,6 @@ const ForecastCard = ({ forecastItem }: ForecastCardProps) => (
       <WeatherBrief
         description={forecastItem.weather.description}
         icon={forecastItem.weather.icon}
-        temp={forecastItem.temp}
         tempMax={forecastItem.tempMax}
         tempMin={forecastItem.tempMin}
       />

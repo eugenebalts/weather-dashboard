@@ -22,8 +22,7 @@ const Forecast = () => {
   }, [error]);
 
   return (
-    <Section width='100%'>
-      <h2>Five Day Forecast</h2>
+    <Section width='100%' title='Five Day Forecast'>
       <div className={styles.content}>
         {isLoading && <ClipLoader />}
         {error && <ReloadButton onClick={() => dispatch(getFiveDayForecast(error.coordinates))} />}

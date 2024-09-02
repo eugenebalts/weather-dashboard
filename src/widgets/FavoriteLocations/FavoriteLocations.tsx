@@ -8,12 +8,11 @@ const FavoriteLocations = () => {
   const { favoriteLocations } = useSelector((state: RootState) => state.favoriteLocations);
 
   return (
-    <Section width='250px'>
-      <h2>Favorite Locations</h2>
+    <Section title='Favorite Locations'>
       {favoriteLocations.length ? (
         <ul className={styles.list}>
           {favoriteLocations.map((location) => (
-            <li className={styles.item} key={location.lat}>
+            <li key={location.lat}>
               <FavoriteLocationCard coordinatesWithMetadata={location} />
             </li>
           ))}
