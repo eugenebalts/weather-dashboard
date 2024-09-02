@@ -1,46 +1,134 @@
-# Getting Started with Create React App
+# Weather Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+⛅: **`Weather Dashboard`** is a web application that provides current weather information and a 5-day weather forecast based on user-provided coordinates.
 
-## Available Scripts
+:rocket: **UI Deployment:** [``https://eugenebalts.github.io/weather-dashboard/build/``](https://eugenebalts.github.io/weather-dashboard/build/) 
 
-In the project directory, you can run:
+## Checklist
 
-### `npm start`
+### 💻: HTML/CSS:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [x] Design a simple and user-friendly interface using semantic HTML5.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [x] Style the application with custom CSS, ensuring a responsive design.
+      
+### 🔵 React:
 
-### `npm test`
+- [x] Use functional components.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [x] Manage state with React hooks (useState, useEffect) for local component state.
 
-### `npm run build`
+### 🟣 Redux:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [x] Use Redux for global state management.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [x] Manage the list of favorite cities in the global state.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🛰️ API Integration:
 
-### `npm run eject`
+- [x] Use fetch to make API calls to OpenWeatherMap
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- [x] Handle loading states and errors gracefully (e.g., display a loading spinner or error message).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### ➕ Bonus points 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- [x] Implement local storage so that the list of favorite cities persists when the page is refreshed.
 
-## Learn More
+- [x] Utilize Redux Toolkit to set up the store, slices, and actions.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [x] Add unit tests for Redux slices and actions.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [x] Display additional weather details, such as a 5-day forecast
+
+---
+
+## Technology Stack
+
+- **React** <sup>_[docs](https://legacy.reactjs.org/docs/getting-started.html)_</sup> - A JavaScript library for building user interfaces.
+- **Redux** <sup>_[docs](https://redux.js.org/introduction/getting-started)_</sup> -  A predictable state container for JavaScript apps.
+- **Redux Toolkit** <sup>_[docs](https://redux-toolkit.js.org/introduction/getting-started)_</sup> - A set of tools for Redux.
+- **TypeScript** <sup>_[docs](https://www.typescriptlang.org/docs/)_</sup> - TypeScript extends JavaScript by adding types to the language.
+- **Sass** <sup>_[docs](https://sass-lang.com/documentation/)_</sup> - Sass is a stylesheet language that’s compiled to CSS.
+- **ESLint** <sup>_[docs](https://eslint.org/docs/latest/)_</sup> - A pluggable linting utility for JavaScript and JSX.
+- **Prettier** <sup>_[docs](https://prettier.io/docs/en/)_</sup> - An opinionated code formatter.
+- **React-toastify** <sup>_[docs](https://fkhadra.github.io/react-toastify/introduction)_</sup> - A notification library..
+
+---
+
+## Getting Started
+
+To get a local copy of the project perform the following actions:
+
+1. Clone the repo
+
+```
+git clone https://github.com/eugenebalts/weather-dashboard.git
+```
+
+2. Install npm packages
+
+```
+npm install
+```
+
+3. Run the project locally
+
+```
+npm run start
+```
+
+## Available scripts
+
+#### Development server
+
+- run the project locally
+
+```
+npm run start
+```
+
+#### Code building
+
+- build development version
+
+```
+npm run build
+```
+
+#### Prettier (code formatting)
+
+- сhecks formatting for all project files
+
+```
+npm run prettier
+```
+
+- auto fixes formatting for all project files
+
+```
+npm run prettier:fix
+```
+
+#### ESLint (code linting)
+
+- checks linting for all project files
+
+```
+npm run lint
+```
+
+- auto fixes linting error for all project files
+
+```
+npm run lint:fix
+```
+
+### Testing
+
+- run tests
+
+```
+npm run test
+```
+
