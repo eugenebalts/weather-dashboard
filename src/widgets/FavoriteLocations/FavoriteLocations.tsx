@@ -2,9 +2,10 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import Section from '../../components/Section/Section';
 import FavoriteLocationCard from './FavoriteLocationCard/FavoriteLocationCard';
+import { PropsWithOnClick } from '../../types';
 import styles from './FavoriteLocations.module.scss';
 
-const FavoriteLocations = () => {
+const FavoriteLocations = ({ onClick }: PropsWithOnClick) => {
   const { favoriteLocations } = useSelector((state: RootState) => state.favoriteLocations);
 
   return (
@@ -13,7 +14,7 @@ const FavoriteLocations = () => {
         <ul className={styles.list}>
           {favoriteLocations.map((location) => (
             <li key={location.lat}>
-              <FavoriteLocationCard coordinatesWithMetadata={location} />
+              <FavoriteLocationCard coordinatesWithMetadata={location} onClick={onClick} />
             </li>
           ))}
         </ul>

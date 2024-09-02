@@ -2,27 +2,23 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { ClipLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
-import { TbLocation } from 'react-icons/tb';
 import { FaLongArrowAltUp } from 'react-icons/fa';
 import { RootState } from '../../redux/store';
 import useFetchWeatherDashboard from '../../hooks/useFetchWeatherDashboard';
-import useGeolocationPosition from '../../hooks/useNavigationLocation';
-import Button from '../../components/Button/Button';
+import useCheckScreenWidth from '../../hooks/useCheckScreenWidth';
 import ReloadButton from '../../components/ReloadButton/ReloadButton';
-import LocationSearch from './LocationSearch/LocationSearch';
 import CurrentWeather from './CurrentWeather/CurrentWeather';
 import Forecast from './Forecast/Forecast';
+import LocationToolbar from '../LocationToolbar/LocationToolbar';
+import { DEFAULT_ICON_SIZE, MOBILE_WIDTH } from '../../constants';
 import styles from './WeatherDashboard.module.scss';
 
-const ICON_SIZE = '2rem';
-
 const WeatherDashboard = () => {
-  const { data, isLoading, error } = useSelector(
-    (state: RootState) => state.weather.currentWeather,
-  );
+  const { data, isLoading, error } = useSelector((state: RootState) => state.weather.currentWeather);
 
-  const { getCurrentPosition } = useGeolocationPosition();
   const { fetchWeatherDashboard } = useFetchWeatherDashboard();
+
+  const isMobile = useCheckScreenWidth(MOBILE_WIDTH);
 
   useEffect(() => {
     if (error) {
@@ -32,24 +28,17 @@ const WeatherDashboard = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.head}>
-        <LocationSearch />
-        <Button variant='text' onClick={getCurrentPosition}>
-          <p className={styles['location-button']}>
-            <TbLocation size={ICON_SIZE} />
-          </p>
-        </Button>
-      </div>
-      {!data && !isLoading && !error && (
+      {!isMobile && <LocationToolbar />}
+      {!data && !isLoading && !error && !isMobile && (
         <div className={styles.welcome}>
           <p className={styles.arrows}>
-            <FaLongArrowAltUp className={styles.red} size={ICON_SIZE} />
-            <FaLongArrowAltUp className={styles.green} size={ICON_SIZE} />
+            <FaLongArrowAltUp className={styles.red} size={DEFAULT_ICON_SIZE} />
+            <FaLongArrowAltUp className={styles.green} size={DEFAULT_ICON_SIZE} />
           </p>
           <p className={styles['welcome-message']}>
             <span className={styles.red}>Enter a location name </span> or{' '}
-            <span className={styles.green}>confirm your location</span> to get an accurate weather
-            forecast. Don`t know where it is? Find a place based on your current location!
+            <span className={styles.green}>confirm your location</span> to get an accurate weather forecast. Don`t know
+            where it is? Find a place based on your current location!
           </p>
         </div>
       )}

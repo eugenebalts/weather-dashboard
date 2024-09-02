@@ -30,3 +30,7 @@ export type DailyForecastItem = {
 };
 
 export type ProcessedForecastData = DailyForecastItem[];
+
+export type PropsWithOnClick = {
+  onClick?: () => void;
+};
