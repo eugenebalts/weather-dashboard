@@ -10,8 +10,8 @@
     },
   },
   "rules": {
-    "max-lines-per-function": ["warn", { "max": 40 }],
-    "max-len": ["warn", { "tabWidth": 2, "code": 100 }],
+    "max-lines-per-function": ["warn", { "max": 80 }],
+    "max-len": ["warn", { "tabWidth": 2, "code": 120 }],
     "no-magic-numbers": [
       "error",
       {
