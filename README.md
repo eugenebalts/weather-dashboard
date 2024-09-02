@@ -1,12 +1,12 @@
 # Weather Dashboard
 
-⛅: **`Weather Dashboard`** is a web application that provides current weather information and a 5-day weather forecast based on user-provided coordinates.
+⛅ **`Weather Dashboard`** is a web application that provides current weather information and a 5-day weather forecast based on user-provided coordinates.
 
 :rocket: **UI Deployment:** [``https://eugenebalts.github.io/weather-dashboard/build/``](https://eugenebalts.github.io/weather-dashboard/build/) 
 
 ## Checklist
 
-### 💻: HTML/CSS:
+### 💻 HTML/CSS:
 
 - [x] Design a simple and user-friendly interface using semantic HTML5.
 
