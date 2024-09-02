@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IoMdAdd } from 'react-icons/io';
 import { AppDispatch, RootState } from '../../../../../redux/store';
@@ -5,11 +6,14 @@ import { favoriteLocationsActions } from '../../../../../redux/slices/favoriteLo
 import useCurrentDate from '../../../../../hooks/useCurrentDate';
 import getLocationName from '../../../../../utils/getLocationName';
 import Button from '../../../../../components/Button/Button';
-import Location from '../../../../../components/Location/Location';
+import LocationComponent from '../../../../../components/Location/Location';
 import { CurrentWeatherHeadProps } from '../CurrentWeatherCard.types';
-import WeatherBrief from '../../../../WeatherBrief/WeatherBrief';
+import WeatherBriefComponent from '../../../../WeatherBrief/WeatherBrief';
 import { SMALL_ICON_SIZE } from '../../../../../constants';
 import styles from './CurrentWeatherHead.module.scss';
+
+const Location = memo(LocationComponent);
+const WeatherBrief = memo(WeatherBriefComponent);
 
 const CurrentWeatherHead = ({ weather, fromGeolocation }: CurrentWeatherHeadProps) => {
   const { favoriteLocations } = useSelector((state: RootState) => state.favoriteLocations);
