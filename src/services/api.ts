@@ -1,7 +1,7 @@
 import { QueryParams } from './types';
 
 class Api {
-  private readonly baseUrl: string = process.env.BASE_URL ?? 'http://api.openweathermap.org';
+  private readonly baseUrl: string = process.env.BASE_URL ?? 'https://api.openweathermap.org';
 
   private readonly apiKey: string = process.env.API_KEY ?? '96c3ca9e67a7585cfc7e16b4fb120469';
 
