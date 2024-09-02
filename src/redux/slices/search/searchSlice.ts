@@ -24,6 +24,9 @@ const searchSlice = createSlice({
 
       state.suggestions = uniquePayload;
     });
+    builder.addCase(getCoordinates.rejected, (state) => {
+      state.suggestions = [];
+    });
   },
 });
 
