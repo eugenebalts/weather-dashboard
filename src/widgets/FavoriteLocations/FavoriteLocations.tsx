@@ -13,7 +13,7 @@ const FavoriteLocations = ({ onClick }: PropsWithOnClick) => {
       {favoriteLocations.length ? (
         <ul className={styles.list}>
           {favoriteLocations.map((location) => (
-            <li key={location.lat}>
+            <li key={location.lat + location.lon}>
               <FavoriteLocationCard coordinatesWithMetadata={location} onClick={onClick} />
             </li>
           ))}
