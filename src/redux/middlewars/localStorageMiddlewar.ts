@@ -4,10 +4,7 @@ import { favoriteLocationsActions } from '../slices/favoriteLocations/favoriteLo
 const localStorageMiddleware: Middleware = (store) => (next) => (action) => {
   const result = next(action);
 
-  if (
-    favoriteLocationsActions.addLocation.match(action) ||
-    favoriteLocationsActions.removeLocation.match(action)
-  ) {
+  if (favoriteLocationsActions.addLocation.match(action) || favoriteLocationsActions.removeLocation.match(action)) {
     const state = store.getState().favoriteLocations;
 
     localStorage.setItem('favoriteLocations', JSON.stringify(state.favoriteLocations));

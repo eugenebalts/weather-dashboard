@@ -5,11 +5,7 @@ class Api {
 
   private readonly apiKey: string = process.env.API_KEY ?? '96c3ca9e67a7585cfc7e16b4fb120469';
 
-  private async request<T>(
-    url: string,
-    options: RequestInit,
-    queryParams?: QueryParams,
-  ): Promise<T> {
+  private async request<T>(url: string, options: RequestInit, queryParams?: QueryParams): Promise<T> {
     const queryParamsWithApiKey = {
       ...queryParams,
       appid: this.apiKey,

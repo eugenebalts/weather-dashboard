@@ -7,14 +7,7 @@ const App = () => (
     <DefaultLayout>
       <AppView />
     </DefaultLayout>
-    <ToastContainer
-      position='bottom-right'
-      autoClose={3000}
-      hideProgressBar
-      closeOnClick
-      draggable
-      pauseOnHover
-    />
+    <ToastContainer position='bottom-right' autoClose={3000} hideProgressBar closeOnClick draggable pauseOnHover />
   </>
 );
 

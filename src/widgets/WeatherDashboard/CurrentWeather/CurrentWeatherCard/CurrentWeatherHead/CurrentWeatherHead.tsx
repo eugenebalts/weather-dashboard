@@ -8,6 +8,7 @@ import Button from '../../../../../components/Button/Button';
 import Location from '../../../../../components/Location/Location';
 import { CurrentWeatherHeadProps } from '../CurrentWeatherCard.types';
 import WeatherBrief from '../../../../WeatherBrief/WeatherBrief';
+import { SMALL_ICON_SIZE } from '../../../../../constants';
 import styles from './CurrentWeatherHead.module.scss';
 
 const CurrentWeatherHead = ({ weather, fromGeolocation }: CurrentWeatherHeadProps) => {
@@ -20,10 +21,7 @@ const CurrentWeatherHead = ({ weather, fromGeolocation }: CurrentWeatherHeadProp
   const isFavoriteLocation = favoriteLocations.find((location) => {
     const { coord } = weather;
 
-    return (
-      (fromGeolocation && location.fromGeolocation) ||
-      (location.lat === coord.lat && location.lon === coord.lon)
-    );
+    return (fromGeolocation && location.fromGeolocation) || (location.lat === coord.lat && location.lon === coord.lon);
   });
 
   const handleClickAdd = () => {
@@ -43,9 +41,7 @@ const CurrentWeatherHead = ({ weather, fromGeolocation }: CurrentWeatherHeadProp
     <div className={styles.wrapper}>
       <Location
         location={
-          weather.name && weather.sys.country
-            ? getLocationName(weather.name, weather.sys.country)
-            : 'Unknown Location'
+          weather.name && weather.sys.country ? getLocationName(weather.name, weather.sys.country) : 'Unknown Location'
         }
         date={currentDate}
       />
@@ -59,7 +55,7 @@ const CurrentWeatherHead = ({ weather, fromGeolocation }: CurrentWeatherHeadProp
       <div className={styles.button}>
         {!isFavoriteLocation && (
           <Button variant='text' color='secondary' onClick={handleClickAdd}>
-            <IoMdAdd size='1rem' />
+            <IoMdAdd size={SMALL_ICON_SIZE} />
           </Button>
         )}
       </div>

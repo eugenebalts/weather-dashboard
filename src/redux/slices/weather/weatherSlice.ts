@@ -52,14 +52,11 @@ const currentWeatherSlice = createSlice({
       state.currentWeather.error = error;
       state.currentWeather.isLoading = false;
     });
-    builder.addCase(
-      getFiveDayForecast.fulfilled,
-      (state, { payload }: PayloadAction<ForecastResponse>) => {
-        state.forecast.data = payload;
-        state.forecast.error = null;
-        state.forecast.isLoading = false;
-      },
-    );
+    builder.addCase(getFiveDayForecast.fulfilled, (state, { payload }: PayloadAction<ForecastResponse>) => {
+      state.forecast.data = payload;
+      state.forecast.error = null;
+      state.forecast.isLoading = false;
+    });
     builder.addCase(getFiveDayForecast.pending, (state) => {
       state.forecast.data = null;
       state.forecast.isLoading = true;

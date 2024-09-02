@@ -20,20 +20,14 @@ const searchSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    builder.addCase(
-      getCoordinates.fulfilled,
-      (state, { payload }: PayloadAction<GeocodingResponse[]>) => {
-        const uniquePayload = payload.filter(
-          (item, index, array) =>
-            index ===
-            array.findIndex(
-              (t) => t.name === item.name && t.lat === item.lat && t.lon === item.lon,
-            ),
-        );
+    builder.addCase(getCoordinates.fulfilled, (state, { payload }: PayloadAction<GeocodingResponse[]>) => {
+      const uniquePayload = payload.filter(
+        (item, index, array) =>
+          index === array.findIndex((t) => t.name === item.name && t.lat === item.lat && t.lon === item.lon),
+      );
 
-        state.suggestions = uniquePayload;
-      },
-    );
+      state.suggestions = uniquePayload;
+    });
   },
 });
 
