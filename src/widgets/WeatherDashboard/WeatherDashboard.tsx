@@ -1,18 +1,18 @@
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { ClipLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
-import { useSelector } from 'react-redux';
 import { TbLocation } from 'react-icons/tb';
 import { FaLongArrowAltUp } from 'react-icons/fa';
 import { RootState } from '../../redux/store';
-import styles from './WeatherDashboard.module.scss';
-import LocationSearch from './LocationSearch/LocationSearch';
+import useFetchWeatherDashboard from '../../hooks/useFetchWeatherDashboard';
 import useGeolocationPosition from '../../hooks/useNavigationLocation';
 import Button from '../../components/Button/Button';
+import ReloadButton from '../../components/ReloadButton/ReloadButton';
+import LocationSearch from './LocationSearch/LocationSearch';
 import CurrentWeather from './CurrentWeather/CurrentWeather';
 import Forecast from './Forecast/Forecast';
-import ReloadButton from '../../components/ReloadButton/ReloadButton';
-import useFetchWeatherDashboard from '../../hooks/useFetchWeatherDashboard';
+import styles from './WeatherDashboard.module.scss';
 
 const ICON_SIZE = '2rem';
 

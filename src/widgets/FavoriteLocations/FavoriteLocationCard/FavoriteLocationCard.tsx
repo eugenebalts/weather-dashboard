@@ -1,15 +1,15 @@
 import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { ClipLoader } from 'react-spinners';
-import Card from '../../../components/Card/Card';
-import { FavoriteLocationCardProps } from './FavoriteLocationCard.types';
-import FavoriteLocationHead from './FavoriteLocationHead/FavoriteLocationHead';
+import useFetchWeatherDashboard from '../../../hooks/useFetchWeatherDashboard';
 import { WeatherResponse } from '../../../services/endpoints/weather/types';
 import weatherApi from '../../../services/endpoints/weather/weatherApi';
+import Card from '../../../components/Card/Card';
+import ReloadButton from '../../../components/ReloadButton/ReloadButton';
+import { FavoriteLocationCardProps } from './FavoriteLocationCard.types';
+import FavoriteLocationHead from './FavoriteLocationHead/FavoriteLocationHead';
 import FavoriteLocationBody from './FavoriteLocationBody/FavoriteLocationBody';
 import styles from './FavoriteLocationCard.module.scss';
-import ReloadButton from '../../../components/ReloadButton/ReloadButton';
-import useFetchWeatherDashboard from '../../../hooks/useFetchWeatherDashboard';
 
 const FavoriteLocationCard = ({ coordinatesWithMetadata }: FavoriteLocationCardProps) => {
   const [weather, setWeather] = useState<WeatherResponse | null>();

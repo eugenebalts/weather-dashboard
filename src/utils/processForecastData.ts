@@ -1,15 +1,6 @@
-import { ForecastResponse, Weather } from '../services/endpoints/weather/types';
+import { ForecastResponse } from '../services/endpoints/weather/types';
+import { DailyForecastItem, ProcessedForecastData } from '../types';
 import convertUnixDate from './convertUnixDate';
-
-export type DailyForecastItem = {
-  date: string;
-  temp: number;
-  tempMin: number;
-  tempMax: number;
-  weather: Weather;
-};
-
-export type ProcessedForecastData = DailyForecastItem[];
 
 const processForecastData = (data: ForecastResponse): ProcessedForecastData => {
   const dailyForecastMap: Record<string, DailyForecastItem> = {};

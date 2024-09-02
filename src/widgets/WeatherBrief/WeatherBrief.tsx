@@ -1,8 +1,8 @@
-import WeatherIcon from '../../components/WeatherIcon/WeatherIcon';
 import capitalizeSentence from '../../utils/capitalizeSentence';
 import formatDegrees from '../../utils/formatDegrees';
-import styles from './WeatherBrief.module.scss';
+import WeatherIcon from '../../components/WeatherIcon/WeatherIcon';
 import { WeatherBriefProps } from './WeatherBrief.types';
+import styles from './WeatherBrief.module.scss';
 
 const WeatherBrief = ({ description, icon, temp, tempMax, tempMin }: WeatherBriefProps) => (
   <div className={styles.wrapper}>

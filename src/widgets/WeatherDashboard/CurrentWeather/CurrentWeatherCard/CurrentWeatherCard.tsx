@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import Card from '../../../../components/Card/Card';
 import { RootState } from '../../../../redux/store';
+import Card from '../../../../components/Card/Card';
 import CurrentWeatherHead from './CurrentWeatherHead/CurrentWeatherHead';
 import CurrentWeatherBody from './CurrentWeatherBody/CurrentWeatherBody';
 

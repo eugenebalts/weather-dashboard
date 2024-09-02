@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FavoriteLocationsState } from './types';
-import { Coordinates } from '../../../services/endpoints/geocoding/types';
-import { CoordinatesWithMetadata } from '../weather/actions/types';
+import { Coordinates , CoordinatesWithMetadata } from '../../../types';
 
 const initialState: FavoriteLocationsState = {
   favoriteLocations: JSON.parse(localStorage.getItem('favoriteLocations') || '[]'),

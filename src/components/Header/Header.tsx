@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../redux/store';
+import { weatherActions } from '../../redux/slices/weather/weatherSlice';
 import Button from '../Button/Button';
 import Container from '../Container/Container';
 import styles from './Header.module.scss';
-import { AppDispatch } from '../../redux/store';
-import { weatherActions } from '../../redux/slices/weather/weatherSlice';
 
 const Header = () => {
   const dispatch: AppDispatch = useDispatch();

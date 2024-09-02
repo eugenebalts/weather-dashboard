@@ -5,12 +5,12 @@ import { AppDispatch, RootState } from '../../../redux/store';
 import { searchActions } from '../../../redux/slices/search/searchSlice';
 import getCoordinates from '../../../redux/slices/search/actions';
 import useDebounce from '../../../hooks/useDebounce';
+import useClickOutside from '../../../hooks/useClickOutside';
+import useFetchWeatherDashboard from '../../../hooks/useFetchWeatherDashboard';
+import getLocationName from '../../../utils/getLocationName';
 import { GeocodingResponse } from '../../../services/endpoints/geocoding/types';
 import Button from '../../../components/Button/Button';
-import useClickOutside from '../../../hooks/useClickOutside';
-import getLocationName from '../../../utils/getLocationName';
 import styles from './LocationSearch.module.scss';
-import useFetchWeatherDashboard from '../../../hooks/useFetchWeatherDashboard';
 
 const LocationSearch = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

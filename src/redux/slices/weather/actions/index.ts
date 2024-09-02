@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import weatherApi from '../../../../services/endpoints/weather/weatherApi';
-import { CoordinatesWithMetadata } from './types';
-import { Coordinates } from '../../../../services/endpoints/geocoding/types';
+import { CoordinatesWithMetadata , Coordinates } from '../../../../types';
 
 export const getCurrentWeather = createAsyncThunk(
   'weather/getCurrentWeather',

@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
-import styles from './FavoriteLocations.module.scss';
 import { RootState } from '../../redux/store';
-import FavoriteLocationCard from './FavoriteLocationCard/FavoriteLocationCard';
 import Section from '../../components/Section/Section';
+import FavoriteLocationCard from './FavoriteLocationCard/FavoriteLocationCard';
+import styles from './FavoriteLocations.module.scss';
 
 const FavoriteLocations = () => {
   const { favoriteLocations } = useSelector((state: RootState) => state.favoriteLocations);

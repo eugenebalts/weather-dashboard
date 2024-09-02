@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux/store';
 import { getCurrentWeather, getFiveDayForecast } from '../redux/slices/weather/actions';
-import { CoordinatesWithMetadata } from '../redux/slices/weather/actions/types';
+import { CoordinatesWithMetadata } from '../types';
 
 const useFetchWeatherDashboard = () => {
   const dispatch: AppDispatch = useDispatch();

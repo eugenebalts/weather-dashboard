@@ -1,13 +1,13 @@
-import { RiDeleteBin2Line } from 'react-icons/ri';
 import { useDispatch } from 'react-redux';
+import { RiDeleteBin2Line } from 'react-icons/ri';
 import { AppDispatch } from '../../../../redux/store';
-import Location from '../../../../components/Location/Location';
+import { favoriteLocationsActions } from '../../../../redux/slices/favoriteLocations/favoriteLocationsSlice';
 import useCurrentDate from '../../../../hooks/useCurrentDate';
 import getLocationName from '../../../../utils/getLocationName';
+import Location from '../../../../components/Location/Location';
+import Button from '../../../../components/Button/Button';
 import { FavoriteLocationHeadProps } from './FavoriteLocationHead.types';
 import styles from './FavoriteLocationHead.module.scss';
-import Button from '../../../../components/Button/Button';
-import { favoriteLocationsActions } from '../../../../redux/slices/favoriteLocations/favoriteLocationsSlice';
 
 const FavoriteLocationHead = ({
   weather,

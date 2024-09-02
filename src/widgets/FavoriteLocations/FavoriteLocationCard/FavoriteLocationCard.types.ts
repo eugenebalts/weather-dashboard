@@ -1,4 +1,4 @@
-import { CoordinatesWithMetadata } from '../../../redux/slices/weather/actions/types';
+import { CoordinatesWithMetadata } from '../../../types';
 
 export type FavoriteLocationCardProps = {
   coordinatesWithMetadata: CoordinatesWithMetadata;

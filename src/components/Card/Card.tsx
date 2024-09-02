@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import styles from './Card.module.scss';
 import { CardProps } from './Card.types';
+import styles from './Card.module.scss';
 
 const Card = ({ head, body, variant = 'contained', color = 'primary', onClick }: CardProps) => {
   const cardClasses = clsx(styles.wrapper, styles[variant], styles[color]);

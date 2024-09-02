@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { CoordinatesWithMetadata } from '../redux/slices/weather/actions/types';
+import { CoordinatesWithMetadata } from '../types';
 import useFetchWeatherDashboard from './useFetchWeatherDashboard';
 
 const useGeolocationPosition = () => {

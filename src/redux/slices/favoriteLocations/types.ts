@@ -1,4 +1,4 @@
-import { CoordinatesWithMetadata } from '../weather/actions/types';
+import { CoordinatesWithMetadata } from '../../../types';
 
 export type FavoriteLocationsState = {
   favoriteLocations: CoordinatesWithMetadata[];

@@ -1,4 +1,4 @@
-import { GeolocationMetadata } from '../../../../redux/slices/weather/types';
+import { GeolocationMetadata } from '../../../../types';
 import { WeatherResponse } from '../../../../services/endpoints/weather/types';
 
 export type CurrentWeatherBodyProps = {

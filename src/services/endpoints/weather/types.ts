@@ -1,4 +1,4 @@
-import { Coordinates } from '../geocoding/types';
+import { Coordinates, Weather } from '../../../types';
 
 type Clouds = {
   all: number;
@@ -21,13 +21,6 @@ type Sys = {
   country: string;
   sunrise: number;
   sunset: number;
-};
-
-export type Weather = {
-  id: number;
-  main: string;
-  description: string;
-  icon: string;
 };
 
 type Wind = {

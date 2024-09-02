@@ -1,5 +1,5 @@
 import api from '../../api';
-import { Coordinates } from '../geocoding/types';
+import { Coordinates } from '../../../types';
 import { ForecastResponse, WeatherResponse } from './types';
 
 class WeatherApi {

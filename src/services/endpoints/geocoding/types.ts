@@ -1,7 +1,4 @@
-export type Coordinates = {
-  lon: number;
-  lat: number;
-};
+import { Coordinates } from '../../../types';
 
 export type GeocodingResponse = {
   name: string;

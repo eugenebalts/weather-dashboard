@@ -1,10 +1,5 @@
-import { Coordinates } from '../../../services/endpoints/geocoding/types';
 import { ForecastResponse, WeatherResponse } from '../../../services/endpoints/weather/types';
-import { CoordinatesWithMetadata } from './actions/types';
-
-export type GeolocationMetadata = {
-  fromGeolocation: boolean;
-};
+import { Coordinates, CoordinatesWithMetadata, GeolocationMetadata } from '../../../types';
 
 type StateWithAsyncHandlers = {
   isLoading: boolean;
